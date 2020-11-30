@@ -1,0 +1,98 @@
+﻿<Window x:Class="ParsianOffice.Windows.winExpress"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParsianOffice.Windows"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="Manual"
+        mc:Ignorable="d"
+        xmlns:cmd = "clr-namespace:ParsianOffice.Classes"
+        Title="معرفی کارشناس" Height="470.105" Width="658.783">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:ApointmentCostomCommand.Delete" CanExecute="DeleteCommand_CanExecute" Executed="DeleteCommand_Executed" />
+        <CommandBinding Command="cmd:ApointmentCostomCommand.Insert" CanExecute="InsertCommand_CanExecute" Executed="InsertCommand_Executed" />
+        <CommandBinding Command="cmd:ApointmentCostomCommand.Refresh" CanExecute="RefreshCommand_CanExecute" Executed="RefreshCommand_Executed"/>
+        <CommandBinding Command="cmd:ApointmentCostomCommand.Search" CanExecute="SearchCommand_CanExecute" Executed="SearchCommand_Executed" />
+    </Window.CommandBindings>
+
+    <Grid FlowDirection="RightToLeft" Name="grd">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="170"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="2">
+            <GroupBox Header="اطلاعات تماس" FontFamily="B Yekan">
+                <telerik:RadGridView IsTabStop="False" Name="grdMain"  DataLoadMode="Asynchronous" CanUserDeleteRows="False" CanUserInsertRows="False" IsReadOnly="False" ShowGroupPanel="False">
+                    <telerik:RadGridView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Name="itmDelete" FontFamily="B Yekan" Header="حذف" Click="itmDelete_Click"/>
+                        </ContextMenu>
+                    </telerik:RadGridView.ContextMenu>
+                </telerik:RadGridView>
+            </GroupBox>
+        </Grid>
+
+        <GridSplitter Background="LightGray" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,2,0"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="39"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="کد کارشناس" VerticalAlignment="Top" Margin="30,40,381,0" FontFamily="B Traffic" FontSize="14" Height="23" />
+            <TextBox Name="txtID" IsReadOnly="True" VerticalAlignment="Top" Margin="100,40,0,0" FontFamily="B Traffic" FontSize="12" HorizontalAlignment="Left" Width="41" KeyDown="txtID_KeyDown" Height="26"/>
+            <Button Name="btnSearch" VerticalAlignment="Top" Margin="146,40,0,0" Width="20" Height="25" IsTabStop="False" HorizontalAlignment="Left" Click="btnSearch_Click">
+                <Image Stretch="Fill" Source="/ParsianOffice;component/Pics/search.ico"/>
+            </Button>
+
+            <RadioButton Name="radActive" IsChecked="True" VerticalAlignment="Top" Margin="260,40,0,0" HorizontalAlignment="Left" Content="فعال" FontFamily="B Traffic" FontSize="13" Height="27" Width="38"/>
+            <RadioButton Name="radDeActive" VerticalAlignment="Top" Margin="330,40,0,0" HorizontalAlignment="Left" Content="غیر فعال" FontFamily="B Traffic" FontSize="13" Height="27" Width="57"/>
+
+            <TextBlock Text="نام کارشناس" Margin="30,70,20,0" FontFamily="B Traffic" FontSize="14" VerticalAlignment="Top" Height="23" />
+            <TextBox Name="txtName" Margin="100,70,20,0" FontFamily="B Traffic" FontSize="12" VerticalAlignment="Top" Height="26" />
+
+            <TextBlock Text="کد ملی" Margin="30,100,20,0" FontFamily="B Traffic" FontSize="14" VerticalAlignment="Top" Height="23" />
+            <TextBox Name="txtNationalCode" Margin="100,100,20,0" FontFamily="B Traffic" FontSize="12" VerticalAlignment="Top" Height="26" />
+
+            <TextBlock Text="ساعت کاری روزانه" Margin="0,130,20,0" FontFamily="B Traffic" FontSize="14" VerticalAlignment="Top" Height="23" />
+            <!--<TextBox Name="nudDailyTimeWork" Margin="100,130,20,0" FontFamily="B Traffic" FontSize="12" VerticalAlignment="Top" />-->
+            <Slider Name="slidNumber" Margin="100,130,0,0" VerticalAlignment="Top" Maximum="12" Minimum="5" ValueChanged="slidNumber_ValueChanged" HorizontalAlignment="Left" Width="155" Height="22"/>
+            <TextBlock Name="lblDailyTimeWork" Margin="270,130,20,0" FontFamily="B Traffic" FontSize="14" VerticalAlignment="Top" Height="23"/>
+
+            <GroupBox Margin="30,165,20,0" VerticalAlignment="Top" Header="اطلاعات تماس" FontFamily="B Traffic" Height="115">
+                <Grid>
+                    <TextBlock Text="نام فیلد" Margin="30,10,20,0" FontFamily="B Traffic" FontSize="14" VerticalAlignment="Top" />
+
+                    <ComboBox SelectedIndex="0" IsEditable="True" Name="cmbFieldName" Margin="100,10,20,0" FontFamily="B Traffic" FontSize="12" VerticalAlignment="Top">
+                        <ComboBox.ContextMenu>
+                            <ContextMenu FontFamily="B Homa">
+                                <MenuItem Name="itmAddContactKind" Header="لیست مشخصات" Click="itmAddContactKind_Click"/>
+                            </ContextMenu>
+                        </ComboBox.ContextMenu>
+                    </ComboBox>
+
+                    <TextBlock Text="مقدار فیلد" Margin="30,40,20,0" FontFamily="B Traffic" FontSize="14" VerticalAlignment="Top" />
+                    <TextBox Name="txtData" Margin="100,40,50,0" FontFamily="B Traffic" FontSize="12" VerticalAlignment="Top" KeyDown="txtData_KeyDown"/>
+                    <Button Click="btnAdd_Click" IsTabStop="False" Name="btnAdd" VerticalAlignment="Top" Width="20" Height="20" Margin="0,40,20,0" HorizontalAlignment="Right" >
+                        <Image Name="img" Stretch="Fill" Source="/ParsianOffice;component/Pics/add.png" />
+                    </Button>
+                </Grid>
+            </GroupBox>
+
+            <TextBlock Text="آدرس" VerticalAlignment="Top" Margin="30,285,0,0" FontFamily="B Traffic" FontSize="14" Height="23"/>
+            <TextBox Name="txtAddress" TextWrapping="Wrap" Margin="70,285,20,0" FontFamily="B Traffic" FontSize="12" AcceptsReturn="True"/>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button Name="btnSave" Click="btnSave_Click" Content="ذخیره" Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Right"/>
+                <Button Name="btnDelete" Click="btnDelete_Click" Content="حذف" Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Center"/>
+                <Button Name="btnCancel" Click="btnCancel_Click" Content="خروج" Margin="10,5" Width="70" FontFamily="B Yekan" HorizontalAlignment="Left"/>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Window>

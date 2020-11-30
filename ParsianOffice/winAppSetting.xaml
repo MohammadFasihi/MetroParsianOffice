@@ -1,0 +1,76 @@
+﻿<Window x:Class="ParsianOffice.winAppSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParsianOffice" Loaded="Window_Loaded" Closing="Window_Closing"
+        mc:Ignorable="d"
+        Title="تنظیمات کاربر جاری" Height="518.343" Width="498.817">
+    <ScrollViewer>
+        <StackPanel FlowDirection="RightToLeft">
+            <GroupBox Header="عمومی" FontFamily="B Yekan" VerticalAlignment="Top">
+                <StackPanel>
+                    <CheckBox Name="chkSaveSize" Content="ذخیره اندازه و موقیت پنجره ها"/>
+                    <CheckBox Name="chkSaveGridLayout" Content="ذخیره خودکار طرح جداول"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Name="chkPaging" Content="صفحه بندی جداول"/>
+                        <TextBlock Text="تعداد ردیف در هر صفحه" Margin="50,3,0,0"/>
+                        <TextBox Name="txtPagingQty" Margin="10,3,0,0" Width="50"  IsEnabled="{Binding ElementName=chkPaging,Path=IsChecked}"/>
+                    </StackPanel>
+                    <CheckBox Name="chkLoadVisitorInCustomerDefine" Content="بارگزاری بازاریاب در تعریف مشتری"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="فاصله ساعتی" Margin="0,3,0,0"/>
+                        <TextBox Name="txtTimeInterval" Margin="30,0,0,0" Width="100"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="گزارشات ورود" VerticalAlignment="Top" FontFamily="B Yekan">
+                <StackPanel>
+                    <CheckBox Name="chkShowApontmentInStart" Content="نمایش قرار های روز هنگام ورود"/>
+                    <CheckBox Name="chkShowFollowInStart" Content="نمایش پیگیری های روز هنگام ورود"/>
+                    <CheckBox Name="chkShowRestInStart" Content="نمایش مرخصی های روز هنگام ورود"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="گزارشات خروج" FontFamily="B Yekan">
+                <StackPanel>
+                    <CheckBox Name="chkShowNextApontmentInExit" Content="نمایش قرار های روز آینده هنگام خروج"/>
+                    <CheckBox Name="chkShowNextFollowInExit" Content="نمایش پیگیری های روز آینده هنگام خروج"/>
+                    <CheckBox Name="chkShowNextRestInExit" Content="نمایش مرخصی های روز آینده هنگام خروج"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="قرارداد" FontFamily="B Yekan">
+                <StackPanel>
+                    <CheckBox Name="chkAutoDefualt" Content="پیشفرض شرایط پرداخت اتوماتیک"/>
+                    <CheckBox Name="chkSetContractInOrderInsert" Content="ثبت قرارداد هنگام صدور فاکتور"/>
+                    <StackPanel Orientation="Vertical">
+                        <GroupBox Header="متن شرایط پرداخت به صورت نقدی">
+                            <StackPanel>
+                                <TextBlock Text="[مبلغ فاکتور][مبلغ تخفیف][مبلغ کل][مبلغ به حروف]"/>
+                                <TextBox Name="txtCashPaymentText" Width="400"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="متن شرایط پرداخت به صورت ترکیبی">
+                            <StackPanel>
+                                <TextBlock Text="[تعداد چک][مبلغ فاکتور][مبلغ تخفیف][مبلغ کل][نقدی][مبلغ به حروف]"/>
+                                <TextBox Name="txtMixPaymentText" Width="500"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="قرار ملاقات" FontFamily="B Yekan">
+                <StackPanel>
+                    <CheckBox Name="chkResyWarninigInApointmentInsert" Content="اخطار مرخصی در ثبت قرار ملاقات"/>
+                    <CheckBox Name="chkShowAppointmentsInInsert" Content="نمایش قرار های روز هنگام ثبت قرار ملاقات"/>
+                </StackPanel>
+            </GroupBox>
+
+            <Button Name="btnChangePassword" HorizontalAlignment="Left" Width="100" Content="تغییر کلمه عبور"  FontFamily="B Yekan"  Padding="10,5" Margin="20,10,0,10" Click="btnChangePassword_Click" />
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,84 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:PersianDateControls="clr-namespace:Arash.PersianDateControls;assembly=PersianDateControls"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+        x:Class="ParsianOffice.Windows.winApointment"
+        Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="Manual"
+        mc:Ignorable="d"
+        xmlns:local = "clr-namespace:ParsianOffice.Classes"
+    xmlns:wpftc1="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    Title="ثبت قرار ملاقات" Height="457.158" Width="532.362">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:ApointmentCostomCommand.Delete" CanExecute="DeleteCommand_CanExecute" Executed="DeleteCommand_Executed" />
+        <CommandBinding Command="local:ApointmentCostomCommand.Refresh" CanExecute="RefreshCommand_CanExecute" Executed="RefreshCommand_Executed" />
+        <CommandBinding Command="local:ApointmentCostomCommand.Insert" CanExecute="InsertCommand_CanExecute" Executed="InsertCommand_Executed" />
+        <CommandBinding Command="local:ApointmentCostomCommand.Search" CanExecute="SearchCommand_CanExecute" Executed="SearchCommand_Executed" />
+    </Window.CommandBindings>
+    <Grid FlowDirection="RightToLeft" Name="grdMain">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="83"/>
+            <ColumnDefinition Width="7.158"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="38"/>
+        </Grid.RowDefinitions>
+        <Grid Name="grdCancelation">
+            <dxg:GridControl Name="gcCancelation">
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="viw" AllowEditing="False"  ShowGroupPanel="False" ColumnChooserColumnDisplayMode="ShowHiddenColumnsOnly" AutoWidth="True" FontFamily="B Yekan"/>
+                </dxg:GridControl.View>
+                <dxg:GridColumn FieldName="Title" AllowEditing="False" Header="عنوان"/>
+                <dxg:GridColumn FieldName="Field" Header="مقدار" Name="colField" />
+            </dxg:GridControl>
+        </Grid>
+        <TextBlock Text="کد قرار" FontFamily="B Traffic" wpftc1:Grid.Column="2" FontSize="12" VerticalAlignment="Top" Margin="20,30,20,0" Height="20"/>
+        <TextBox x:Name="txtID" FontFamily="B Traffic" wpftc1:Grid.Column="2" FontSize="11" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="60,30,0,0" Width="30" Height="26"/>
+        <Button x:Name="btnSearch" Margin="95,30,0,0" wpftc1:Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="20" Height="25" Click="btnSearch_Click">
+            <Image Stretch="Fill" Source="/ParsianOffice;component/Pics/search.ico" />
+        </Button>
+
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
+
+        <TextBlock Text="مشتری" wpftc1:Grid.Column="2" VerticalAlignment="Top" Margin="20,60,20,0" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <dxg:LookUpEdit Name="cmbCustomer"  wpftc1:Grid.Column="2" ImmediatePopup="True" FilterCondition="Contains" VerticalAlignment="Top" Margin="60,60,60,0" FontFamily="B Traffic" FontSize="12" Height="22" SelectedIndexChanged="cmbCustomer_SelectedIndexChanged" />
+
+        <TextBlock Text="نام" VerticalAlignment="Top" wpftc1:Grid.Column="2" Margin="20,90,20,0" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <TextBox Name="txtCustomer" VerticalAlignment="Top" wpftc1:Grid.Column="2" Margin="60,90,230,0" FontFamily="B Traffic" FontSize="12" Height="26" />
+
+        <TextBlock Text="شماره" VerticalAlignment="Top" wpftc1:Grid.Column="2" Margin="0,90,20,0" FontFamily="B Traffic" FontSize="12" Height="20" HorizontalAlignment="Right" Width="205"/>
+        <TextBox Name="txtNumber" VerticalAlignment="Top" wpftc1:Grid.Column="2" Margin="0,90,60,0" FontFamily="B Traffic" FontSize="12" Height="26" HorizontalAlignment="Right" Width="136" />
+
+        <TextBlock Text="کارشناس" VerticalAlignment="Top" wpftc1:Grid.Column="2" Margin="20,120,20,0" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <dxg:LookUpEdit Name="cmbExpert" VerticalAlignment="Top" wpftc1:Grid.Column="2"  ImmediatePopup="True" FilterCondition="Contains" Margin="60,120,60,0" FontFamily="B Traffic" FontSize="12" Height="22"  />
+
+        <TextBlock Text="تاریخ" Margin="20,150,0,0" VerticalAlignment="Top" wpftc1:Grid.Column="2" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <PersianDateControls:PersianDatePicker x:Name="dpDate" wpftc1:Grid.Column="2"  FontFamily="B Traffic" FontSize="12" Margin="60,150,60,0" VerticalAlignment="Top" FlowDirection="LeftToRight" Width="Auto"/>
+
+        <TextBlock Text="ساعت" VerticalAlignment="Top" wpftc1:Grid.Column="2" Margin="20,180,20,0" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <ComboBox x:Name="cmbTimePicker" VerticalAlignment="Top" wpftc1:Grid.Column="2" FontFamily="B Traffic" FontSize="11" Text="00:00"  Margin="60,180,60,0" IsEditable="False" Height="26"/>
+
+        <TextBlock Text="نوع قرار" VerticalAlignment="Top" Margin="20,210,20,0" wpftc1:Grid.Column="2" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <ComboBox x:Name="cmbKind" VerticalAlignment="Top" wpftc1:Grid.Column="2"  FontFamily="B Traffic" FontSize="11" Margin="60,210,60,0" IsEditable="True" Height="26" />
+
+        <TextBlock Text="منطقه" VerticalAlignment="Top" wpftc1:Grid.Column="2" Margin="20,240,20,0" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <TextBox x:Name="txtArea" VerticalAlignment="Top" wpftc1:Grid.Column="2"  FontFamily="B Traffic" FontSize="11" Margin="60,240,60,0" Height="26" />
+
+        <TextBlock Text="وضعیت" VerticalAlignment="Top" wpftc1:Grid.Column="2" Margin="20,265,20,0" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <ComboBox x:Name="cmbSituation" IsEditable="True" wpftc1:Grid.Column="2" VerticalAlignment="Top"  FontFamily="B Traffic" FontSize="11" Margin="60,270,60,0" Height="26" />
+
+        <TextBlock Text="آدرس" VerticalAlignment="Top" wpftc1:Grid.Column="2" Margin="20,295,20,0" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <TextBox x:Name="txtAddress" TextWrapping="Wrap" FontFamily="B Traffic" wpftc1:Grid.Column="2" FontSize="11" Margin="60,305,60,20" AcceptsReturn="True" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" wpftc1:Grid.Column="2">
+            <Button x:Name="btnSave" Click="btnSave_Click" Content="ذخیره"  Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Right"/>
+            <Button x:Name="btnDelete" Click="btnDelete_Click" Content="حذف" Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Center"/>
+            <Button x:Name="btnCancel" IsCancel="True" Click="btnCancel_Click" Content="خروج" Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

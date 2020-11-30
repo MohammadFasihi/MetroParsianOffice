@@ -1,0 +1,2127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OfficeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" />
+          <Property Name="ShowApointmentInStart" Type="bit" Nullable="false" />
+          <Property Name="ShowFollowInStart" Type="bit" Nullable="false" />
+          <Property Name="ShowRestInStart" Type="bit" Nullable="false" />
+          <Property Name="ShowDiscountInPaymentText" Type="bit" Nullable="false" />
+          <Property Name="SaveSizes" Type="bit" Nullable="false" />
+          <Property Name="WarningRestInApointment" Type="bit" Nullable="false" />
+          <Property Name="AutoDefaultPaymentText" Type="bit" Nullable="false" />
+          <Property Name="SaveGridLayout" Type="bit" Nullable="false" />
+          <Property Name="ShowNextApointmentInExit" Type="bit" Nullable="false" />
+          <Property Name="ShowNextFollowInExit" Type="bit" Nullable="false" />
+          <Property Name="ShowNextRestInExit" Type="bit" Nullable="false" />
+          <Property Name="ShowApointmentInInsert" Type="bit" Nullable="false" />
+          <Property Name="InsertContractAfterOrder" Type="bit" Nullable="false" />
+          <Property Name="PrintQty" Type="tinyint" />
+          <Property Name="GridPaging" Type="bit" Nullable="false" />
+          <Property Name="PagingQty" Type="tinyint" />
+          <Property Name="ShowAllCustomer" Type="bit" Nullable="false" />
+          <Property Name="LoadVisitorInCustomerDefine" Type="bit" Nullable="false" />
+          <Property Name="CashPaymentText" Type="nvarchar(max)" />
+          <Property Name="MixPaymentText" Type="nvarchar(max)" />
+          <Property Name="TimeInterval" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_ApKinds">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kind_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Apointments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kind_ID" Type="int" />
+          <Property Name="ap_Date" Type="datetime" />
+          <Property Name="ap_Area" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_ID" Type="int" />
+          <Property Name="expert_ID" Type="int" />
+          <Property Name="user_ID" Type="int" />
+          <Property Name="st_ID" Type="int" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="changedUserID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_ContactKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KindName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Contract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="order_ID" Type="int" />
+          <Property Name="payment_Text" Type="nvarchar(max)" />
+          <Property Name="user_ID" Type="int" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="report_ID" Type="int" />
+          <Property Name="sh_Date" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Customer">
+          <Key>
+            <PropertyRef Name="cu_ID" />
+          </Key>
+          <Property Name="cu_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cu_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_NationalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_Address" Type="nvarchar(max)" />
+          <Property Name="vt_ID" Type="int" />
+          <Property Name="vt_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_CustomName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerPhone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cu_ID" Type="int" />
+          <Property Name="cu_Field" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_Data" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_ExpertKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpertKind" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_ExpertPhone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ep_ID" Type="int" />
+          <Property Name="ep_Field" Type="nvarchar" MaxLength="50" />
+          <Property Name="ep_Data" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Experts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ep_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ep_NationalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ep_Address" Type="nvarchar(max)" />
+          <Property Name="ep_IsActive" Type="bit" />
+          <Property Name="ep_kind" Type="int" />
+          <Property Name="ep_DailyTimeWork" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_FollowUP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fl_Text" Type="nvarchar(max)" />
+          <Property Name="fl_Date" Type="datetime" />
+          <Property Name="user_ID" Type="int" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_ID" Type="int" />
+          <Property Name="changedUserID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Issues">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="issue_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="issue_Price" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_OrderDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_ID" Type="int" />
+          <Property Name="recID" Type="int" />
+          <Property Name="issue_ID" Type="int" />
+          <Property Name="issue_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="detail_Qty" Type="int" />
+          <Property Name="detail_Discount" Type="int" />
+          <Property Name="detail_Discount_Per" Type="tinyint" />
+          <Property Name="detail_Users" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="RecPrice" Type="int" />
+          <Property Name="detail_Price" Type="int" />
+          <Property Name="detail_RecPrice" Type="int" />
+          <Property Name="detail_Comment" Type="nvarchar(max)" />
+          <Property Name="detail_IsDone" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_OrderHeader">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="order_Date" Type="datetime" />
+          <Property Name="order_Side" Type="int" />
+          <Property Name="order_Comment" Type="nvarchar(max)" />
+          <Property Name="order_BasePrice" Type="int" />
+          <Property Name="order_Dsicount" Type="int" />
+          <Property Name="order_Price" Type="int" />
+          <Property Name="user_ID" Type="int" />
+          <Property Name="st_ID" Type="int" />
+          <Property Name="sh_Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_kind" Type="int" />
+          <Property Name="changedUserID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_OrderKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="orderKind" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_PrintDesigns">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="design_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="design_File" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_PrintSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="PreviewBeforePrint" Type="bit" Nullable="false" />
+          <Property Name="LoadDesignBeforePrint" Type="bit" Nullable="false" />
+          <Property Name="PrintQty" Type="tinyint" />
+          <Property Name="DefaultDesignID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Reason">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="res_Text" Type="nvarchar(max)" />
+          <Property Name="res_Side" Type="nvarchar" MaxLength="50" />
+          <Property Name="ap_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Situation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="st_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_UserAccess">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Section" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertAccess" Type="bit" />
+          <Property Name="UpdateAccess" Type="bit" />
+          <Property Name="DeleteAccess" Type="bit" />
+          <Property Name="PrintAccess" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="vt_ID" Type="int" />
+          <Property Name="kind" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Vacations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ep_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="vc_StartDate" Type="datetime" />
+          <Property Name="vc_EndDate" Type="datetime" />
+          <Property Name="ep_ID" Type="int" />
+          <Property Name="sh_StartDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="sh_EndDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="startTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="endTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="ep_TimeRest" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OfficeDB.dbo.viw_ApointmentReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viw_ApointmentReport">
+          <Key>
+            <PropertyRef Name="cu_ID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ep_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ap_Date" Type="datetime" />
+          <Property Name="ap_Area" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_ID" Type="int" Nullable="false" />
+          <Property Name="cu_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_NationalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_Address" Type="nvarchar(max)" />
+          <Property Name="st_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="kind_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="vt_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OfficeDB.dbo.viw_Contract' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viw_Contract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="payment_Text" Type="nvarchar(max)" />
+          <Property Name="sh_Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_ID" Type="int" />
+          <Property Name="order_BasePrice" Type="int" />
+          <Property Name="order_Dsicount" Type="int" />
+          <Property Name="order_Price" Type="int" />
+          <Property Name="cu_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="vt_ID" Type="int" />
+          <Property Name="vt_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OfficeDB.dbo.viw_FollowUPs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viw_FollowUPs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="cu_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="fl_Text" Type="nvarchar(max)" />
+          <Property Name="cu_NationalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="cu_Address" Type="nvarchar(max)" />
+          <Property Name="vt_Name" Type="nvarchar(max)" />
+          <Property Name="fl_Date" Type="datetime" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="visitorID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OfficeDB.dbo.viw_VisitorsSale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <Association Name="FK_AppSettings_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="AppSettings" Type="Self.AppSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AppSettings">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_ApKinds">
+          <End Role="tbl_ApKinds" Type="Self.tbl_ApKinds" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ApKinds">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="kind_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="cu_ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="cu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Experts">
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Experts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="expert_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Situation">
+          <End Role="tbl_Situation" Type="Self.tbl_Situation" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Situation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="st_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="changedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contract_tbl_OrderHeader">
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="0..1" />
+          <End Role="tbl_Contract" Type="Self.tbl_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_OrderHeader">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Contract">
+              <PropertyRef Name="order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contract_tbl_PrintDesigns">
+          <End Role="tbl_PrintDesigns" Type="Self.tbl_PrintDesigns" Multiplicity="0..1" />
+          <End Role="tbl_Contract" Type="Self.tbl_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PrintDesigns">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Contract">
+              <PropertyRef Name="report_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contract_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Contract" Type="Self.tbl_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Contract">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Customer_tbl_Experts">
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="0..1" />
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Experts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Customer">
+              <PropertyRef Name="vt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CustomerPhone_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="0..1" />
+          <End Role="tbl_CustomerPhone" Type="Self.tbl_CustomerPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="cu_ID" />
+            </Principal>
+            <Dependent Role="tbl_CustomerPhone">
+              <PropertyRef Name="cu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ExpertPhone_tbl_Experts">
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="0..1" />
+          <End Role="tbl_ExpertPhone" Type="Self.tbl_ExpertPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Experts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_ExpertPhone">
+              <PropertyRef Name="ep_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Experts_tbl_ExpertKind">
+          <End Role="tbl_ExpertKind" Type="Self.tbl_ExpertKind" Multiplicity="0..1" />
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ExpertKind">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Experts">
+              <PropertyRef Name="ep_kind" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_FollowUP_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="0..1" />
+          <End Role="tbl_FollowUP" Type="Self.tbl_FollowUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="cu_ID" />
+            </Principal>
+            <Dependent Role="tbl_FollowUP">
+              <PropertyRef Name="cu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_FollowUP_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_FollowUP" Type="Self.tbl_FollowUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_FollowUP">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_FollowUP_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_FollowUP" Type="Self.tbl_FollowUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_FollowUP">
+              <PropertyRef Name="changedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderDetails_tbl_Issues">
+          <End Role="tbl_Issues" Type="Self.tbl_Issues" Multiplicity="0..1" />
+          <End Role="tbl_OrderDetails" Type="Self.tbl_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Issues">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderDetails">
+              <PropertyRef Name="issue_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderDetails_tbl_OrderHeader">
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="0..1" />
+          <End Role="tbl_OrderDetails" Type="Self.tbl_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_OrderHeader">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderDetails">
+              <PropertyRef Name="order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="cu_ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="order_Side" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_OrderKind1">
+          <End Role="tbl_OrderKind" Type="Self.tbl_OrderKind" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_OrderKind">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="order_kind" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_Situation">
+          <End Role="tbl_Situation" Type="Self.tbl_Situation" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Situation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="st_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="changedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrintSettings_tbl_PrintDesigns">
+          <End Role="tbl_PrintDesigns" Type="Self.tbl_PrintDesigns" Multiplicity="0..1" />
+          <End Role="tbl_PrintSettings" Type="Self.tbl_PrintSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PrintDesigns">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PrintSettings">
+              <PropertyRef Name="DefaultDesignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrintSettings_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_PrintSettings" Type="Self.tbl_PrintSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PrintSettings">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Reason_tbl_Apointments">
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="0..1" />
+          <End Role="tbl_Reason" Type="Self.tbl_Reason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Apointments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Reason">
+              <PropertyRef Name="ap_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserAccess_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_UserAccess" Type="Self.tbl_UserAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_UserAccess">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Vacations_tbl_Experts">
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="0..1" />
+          <End Role="tbl_Vacations" Type="Self.tbl_Vacations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Experts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Vacations">
+              <PropertyRef Name="ep_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OfficeDBModelStoreContainer">
+          <EntitySet Name="AppSettings" EntityType="Self.AppSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ApKinds" EntityType="Self.tbl_ApKinds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Apointments" EntityType="Self.tbl_Apointments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ContactKind" EntityType="Self.tbl_ContactKind" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Contract" EntityType="Self.tbl_Contract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CustomerPhone" EntityType="Self.tbl_CustomerPhone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ExpertKind" EntityType="Self.tbl_ExpertKind" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ExpertPhone" EntityType="Self.tbl_ExpertPhone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Experts" EntityType="Self.tbl_Experts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_FollowUP" EntityType="Self.tbl_FollowUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Issues" EntityType="Self.tbl_Issues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_OrderDetails" EntityType="Self.tbl_OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_OrderHeader" EntityType="Self.tbl_OrderHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_OrderKind" EntityType="Self.tbl_OrderKind" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PrintDesigns" EntityType="Self.tbl_PrintDesigns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PrintSettings" EntityType="Self.tbl_PrintSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Reason" EntityType="Self.tbl_Reason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Situation" EntityType="Self.tbl_Situation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserAccess" EntityType="Self.tbl_UserAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Vacations" EntityType="Self.tbl_Vacations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="viw_ApointmentReport" EntityType="Self.viw_ApointmentReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viw_ApointmentReport].[ep_Name] AS [ep_Name], 
+    [viw_ApointmentReport].[ap_Date] AS [ap_Date], 
+    [viw_ApointmentReport].[ap_Area] AS [ap_Area], 
+    [viw_ApointmentReport].[cu_ID] AS [cu_ID], 
+    [viw_ApointmentReport].[cu_Name] AS [cu_Name], 
+    [viw_ApointmentReport].[cu_NationalCode] AS [cu_NationalCode], 
+    [viw_ApointmentReport].[cu_Email] AS [cu_Email], 
+    [viw_ApointmentReport].[cu_Address] AS [cu_Address], 
+    [viw_ApointmentReport].[st_Name] AS [st_Name], 
+    [viw_ApointmentReport].[kind_Name] AS [kind_Name], 
+    [viw_ApointmentReport].[username] AS [username], 
+    [viw_ApointmentReport].[ID] AS [ID], 
+    [viw_ApointmentReport].[Date] AS [Date], 
+    [viw_ApointmentReport].[Time] AS [Time], 
+    [viw_ApointmentReport].[vt_Name] AS [vt_Name]
+    FROM [dbo].[viw_ApointmentReport] AS [viw_ApointmentReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viw_Contract" EntityType="Self.viw_Contract" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viw_Contract].[ID] AS [ID], 
+    [viw_Contract].[payment_Text] AS [payment_Text], 
+    [viw_Contract].[sh_Date] AS [sh_Date], 
+    [viw_Contract].[order_ID] AS [order_ID], 
+    [viw_Contract].[order_BasePrice] AS [order_BasePrice], 
+    [viw_Contract].[order_Dsicount] AS [order_Dsicount], 
+    [viw_Contract].[order_Price] AS [order_Price], 
+    [viw_Contract].[cu_Name] AS [cu_Name], 
+    [viw_Contract].[vt_ID] AS [vt_ID], 
+    [viw_Contract].[vt_Name] AS [vt_Name]
+    FROM [dbo].[viw_Contract] AS [viw_Contract]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viw_FollowUPs" EntityType="Self.viw_FollowUPs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [viw_FollowUPs].[ID] AS [ID], 
+    [viw_FollowUPs].[cu_Name] AS [cu_Name], 
+    [viw_FollowUPs].[Date] AS [Date], 
+    [viw_FollowUPs].[fl_Text] AS [fl_Text], 
+    [viw_FollowUPs].[cu_NationalCode] AS [cu_NationalCode], 
+    [viw_FollowUPs].[cu_Email] AS [cu_Email], 
+    [viw_FollowUPs].[cu_Address] AS [cu_Address], 
+    [viw_FollowUPs].[vt_Name] AS [vt_Name], 
+    [viw_FollowUPs].[fl_Date] AS [fl_Date], 
+    [viw_FollowUPs].[username] AS [username], 
+    [viw_FollowUPs].[visitorID] AS [visitorID]
+    FROM [dbo].[viw_FollowUPs] AS [viw_FollowUPs]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AppSettings_tbl_Users" Association="Self.FK_AppSettings_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="AppSettings" EntitySet="AppSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_ApKinds" Association="Self.FK_tbl_Apointments_tbl_ApKinds">
+            <End Role="tbl_ApKinds" EntitySet="tbl_ApKinds" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Customer" Association="Self.FK_tbl_Apointments_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Experts" Association="Self.FK_tbl_Apointments_tbl_Experts">
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Situation" Association="Self.FK_tbl_Apointments_tbl_Situation">
+            <End Role="tbl_Situation" EntitySet="tbl_Situation" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Users" Association="Self.FK_tbl_Apointments_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Users1" Association="Self.FK_tbl_Apointments_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contract_tbl_OrderHeader" Association="Self.FK_tbl_Contract_tbl_OrderHeader">
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+            <End Role="tbl_Contract" EntitySet="tbl_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contract_tbl_PrintDesigns" Association="Self.FK_tbl_Contract_tbl_PrintDesigns">
+            <End Role="tbl_PrintDesigns" EntitySet="tbl_PrintDesigns" />
+            <End Role="tbl_Contract" EntitySet="tbl_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contract_tbl_Users" Association="Self.FK_tbl_Contract_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Contract" EntitySet="tbl_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Customer_tbl_Experts" Association="Self.FK_tbl_Customer_tbl_Experts">
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CustomerPhone_tbl_Customer" Association="Self.FK_tbl_CustomerPhone_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_CustomerPhone" EntitySet="tbl_CustomerPhone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ExpertPhone_tbl_Experts" Association="Self.FK_tbl_ExpertPhone_tbl_Experts">
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+            <End Role="tbl_ExpertPhone" EntitySet="tbl_ExpertPhone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Experts_tbl_ExpertKind" Association="Self.FK_tbl_Experts_tbl_ExpertKind">
+            <End Role="tbl_ExpertKind" EntitySet="tbl_ExpertKind" />
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_FollowUP_tbl_Customer" Association="Self.FK_tbl_FollowUP_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_FollowUP" EntitySet="tbl_FollowUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_FollowUP_tbl_Users" Association="Self.FK_tbl_FollowUP_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_FollowUP" EntitySet="tbl_FollowUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_FollowUP_tbl_Users1" Association="Self.FK_tbl_FollowUP_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_FollowUP" EntitySet="tbl_FollowUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderDetails_tbl_Issues" Association="Self.FK_tbl_OrderDetails_tbl_Issues">
+            <End Role="tbl_Issues" EntitySet="tbl_Issues" />
+            <End Role="tbl_OrderDetails" EntitySet="tbl_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderDetails_tbl_OrderHeader" Association="Self.FK_tbl_OrderDetails_tbl_OrderHeader">
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+            <End Role="tbl_OrderDetails" EntitySet="tbl_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_Customer" Association="Self.FK_tbl_OrderHeader_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_OrderKind1" Association="Self.FK_tbl_OrderHeader_tbl_OrderKind1">
+            <End Role="tbl_OrderKind" EntitySet="tbl_OrderKind" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_Situation" Association="Self.FK_tbl_OrderHeader_tbl_Situation">
+            <End Role="tbl_Situation" EntitySet="tbl_Situation" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_Users" Association="Self.FK_tbl_OrderHeader_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_Users1" Association="Self.FK_tbl_OrderHeader_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrintSettings_tbl_PrintDesigns" Association="Self.FK_tbl_PrintSettings_tbl_PrintDesigns">
+            <End Role="tbl_PrintDesigns" EntitySet="tbl_PrintDesigns" />
+            <End Role="tbl_PrintSettings" EntitySet="tbl_PrintSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrintSettings_tbl_Users" Association="Self.FK_tbl_PrintSettings_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrintSettings" EntitySet="tbl_PrintSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Reason_tbl_Apointments" Association="Self.FK_tbl_Reason_tbl_Apointments">
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+            <End Role="tbl_Reason" EntitySet="tbl_Reason" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserAccess_tbl_Users" Association="Self.FK_tbl_UserAccess_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_UserAccess" EntitySet="tbl_UserAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Vacations_tbl_Experts" Association="Self.FK_tbl_Vacations_tbl_Experts">
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+            <End Role="tbl_Vacations" EntitySet="tbl_Vacations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OfficeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AppSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" />
+          <Property Name="ShowApointmentInStart" Type="Boolean" Nullable="false" />
+          <Property Name="ShowFollowInStart" Type="Boolean" Nullable="false" />
+          <Property Name="ShowRestInStart" Type="Boolean" Nullable="false" />
+          <Property Name="ShowDiscountInPaymentText" Type="Boolean" Nullable="false" />
+          <Property Name="SaveSizes" Type="Boolean" Nullable="false" />
+          <Property Name="WarningRestInApointment" Type="Boolean" Nullable="false" />
+          <Property Name="AutoDefaultPaymentText" Type="Boolean" Nullable="false" />
+          <Property Name="SaveGridLayout" Type="Boolean" Nullable="false" />
+          <Property Name="ShowNextApointmentInExit" Type="Boolean" Nullable="false" />
+          <Property Name="ShowNextFollowInExit" Type="Boolean" Nullable="false" />
+          <Property Name="ShowNextRestInExit" Type="Boolean" Nullable="false" />
+          <Property Name="ShowApointmentInInsert" Type="Boolean" Nullable="false" />
+          <Property Name="InsertContractAfterOrder" Type="Boolean" Nullable="false" />
+          <Property Name="PrintQty" Type="Byte" />
+          <Property Name="GridPaging" Type="Boolean" Nullable="false" />
+          <Property Name="PagingQty" Type="Byte" />
+          <Property Name="ShowAllCustomer" Type="Boolean" Nullable="false" />
+          <Property Name="LoadVisitorInCustomerDefine" Type="Boolean" Nullable="false" />
+          <Property Name="CashPaymentText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MixPaymentText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeInterval" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_AppSettings_tbl_Users" FromRole="AppSettings" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_ApKinds">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kind_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Apointments" Relationship="Self.FK_tbl_Apointments_tbl_ApKinds" FromRole="tbl_ApKinds" ToRole="tbl_Apointments" />
+        </EntityType>
+        <EntityType Name="tbl_Apointments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kind_ID" Type="Int32" />
+          <Property Name="ap_Date" Type="DateTime" Precision="3" />
+          <Property Name="ap_Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_ID" Type="Int32" />
+          <Property Name="expert_ID" Type="Int32" />
+          <Property Name="user_ID" Type="Int32" />
+          <Property Name="st_ID" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="changedUserID" Type="Int32" />
+          <NavigationProperty Name="tbl_ApKinds" Relationship="Self.FK_tbl_Apointments_tbl_ApKinds" FromRole="tbl_Apointments" ToRole="tbl_ApKinds" />
+          <NavigationProperty Name="tbl_Customer" Relationship="Self.FK_tbl_Apointments_tbl_Customer" FromRole="tbl_Apointments" ToRole="tbl_Customer" />
+          <NavigationProperty Name="tbl_Experts" Relationship="Self.FK_tbl_Apointments_tbl_Experts" FromRole="tbl_Apointments" ToRole="tbl_Experts" />
+          <NavigationProperty Name="tbl_Situation" Relationship="Self.FK_tbl_Apointments_tbl_Situation" FromRole="tbl_Apointments" ToRole="tbl_Situation" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Apointments_tbl_Users" FromRole="tbl_Apointments" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Users1" Relationship="Self.FK_tbl_Apointments_tbl_Users1" FromRole="tbl_Apointments" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Reason" Relationship="Self.FK_tbl_Reason_tbl_Apointments" FromRole="tbl_Apointments" ToRole="tbl_Reason" />
+          <Property Name="cu_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_ContactKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KindName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Contract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="order_ID" Type="Int32" />
+          <Property Name="payment_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_ID" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="report_ID" Type="Int32" />
+          <Property Name="sh_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_OrderHeader" Relationship="Self.FK_tbl_Contract_tbl_OrderHeader" FromRole="tbl_Contract" ToRole="tbl_OrderHeader" />
+          <NavigationProperty Name="tbl_PrintDesigns" Relationship="Self.FK_tbl_Contract_tbl_PrintDesigns" FromRole="tbl_Contract" ToRole="tbl_PrintDesigns" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Contract_tbl_Users" FromRole="tbl_Contract" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Customer">
+          <Key>
+            <PropertyRef Name="cu_ID" />
+          </Key>
+          <Property Name="cu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cu_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_NationalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vt_ID" Type="Int32" />
+          <Property Name="vt_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_CustomName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Apointments" Relationship="Self.FK_tbl_Apointments_tbl_Customer" FromRole="tbl_Customer" ToRole="tbl_Apointments" />
+          <NavigationProperty Name="tbl_Experts" Relationship="Self.FK_tbl_Customer_tbl_Experts" FromRole="tbl_Customer" ToRole="tbl_Experts" />
+          <NavigationProperty Name="tbl_CustomerPhone" Relationship="Self.FK_tbl_CustomerPhone_tbl_Customer" FromRole="tbl_Customer" ToRole="tbl_CustomerPhone" />
+          <NavigationProperty Name="tbl_FollowUP" Relationship="Self.FK_tbl_FollowUP_tbl_Customer" FromRole="tbl_Customer" ToRole="tbl_FollowUP" />
+          <NavigationProperty Name="tbl_OrderHeader" Relationship="Self.FK_tbl_OrderHeader_tbl_Customer" FromRole="tbl_Customer" ToRole="tbl_OrderHeader" />
+        </EntityType>
+        <EntityType Name="tbl_CustomerPhone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cu_ID" Type="Int32" />
+          <Property Name="cu_Field" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Customer" Relationship="Self.FK_tbl_CustomerPhone_tbl_Customer" FromRole="tbl_CustomerPhone" ToRole="tbl_Customer" />
+        </EntityType>
+        <EntityType Name="tbl_ExpertKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpertKind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Experts" Relationship="Self.FK_tbl_Experts_tbl_ExpertKind" FromRole="tbl_ExpertKind" ToRole="tbl_Experts" />
+        </EntityType>
+        <EntityType Name="tbl_ExpertPhone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ep_ID" Type="Int32" />
+          <Property Name="ep_Field" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ep_Data" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Experts" Relationship="Self.FK_tbl_ExpertPhone_tbl_Experts" FromRole="tbl_ExpertPhone" ToRole="tbl_Experts" />
+        </EntityType>
+        <EntityType Name="tbl_Experts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ep_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ep_NationalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ep_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ep_IsActive" Type="Boolean" />
+          <Property Name="ep_kind" Type="Int32" />
+          <NavigationProperty Name="tbl_Apointments" Relationship="Self.FK_tbl_Apointments_tbl_Experts" FromRole="tbl_Experts" ToRole="tbl_Apointments" />
+          <NavigationProperty Name="tbl_Customer" Relationship="Self.FK_tbl_Customer_tbl_Experts" FromRole="tbl_Experts" ToRole="tbl_Customer" />
+          <NavigationProperty Name="tbl_ExpertKind" Relationship="Self.FK_tbl_Experts_tbl_ExpertKind" FromRole="tbl_Experts" ToRole="tbl_ExpertKind" />
+          <NavigationProperty Name="tbl_ExpertPhone" Relationship="Self.FK_tbl_ExpertPhone_tbl_Experts" FromRole="tbl_Experts" ToRole="tbl_ExpertPhone" />
+          <NavigationProperty Name="tbl_Vacations" Relationship="Self.FK_tbl_Vacations_tbl_Experts" FromRole="tbl_Experts" ToRole="tbl_Vacations" />
+          <Property Name="ep_DailyTimeWork" Type="Byte" />
+        </EntityType>
+        <EntityType Name="tbl_FollowUP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fl_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fl_Date" Type="DateTime" Precision="3" />
+          <Property Name="user_ID" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_ID" Type="Int32" />
+          <Property Name="changedUserID" Type="Int32" />
+          <NavigationProperty Name="tbl_Customer" Relationship="Self.FK_tbl_FollowUP_tbl_Customer" FromRole="tbl_FollowUP" ToRole="tbl_Customer" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_FollowUP_tbl_Users" FromRole="tbl_FollowUP" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Users1" Relationship="Self.FK_tbl_FollowUP_tbl_Users1" FromRole="tbl_FollowUP" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Issues">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="issue_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="issue_Price" Type="Int32" />
+          <NavigationProperty Name="tbl_OrderDetails" Relationship="Self.FK_tbl_OrderDetails_tbl_Issues" FromRole="tbl_Issues" ToRole="tbl_OrderDetails" />
+        </EntityType>
+        <EntityType Name="tbl_OrderDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_ID" Type="Int32" />
+          <Property Name="recID" Type="Int32" />
+          <Property Name="issue_ID" Type="Int32" />
+          <Property Name="issue_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="detail_Qty" Type="Int32" />
+          <Property Name="detail_Discount" Type="Int32" />
+          <Property Name="detail_Discount_Per" Type="Byte" />
+          <Property Name="detail_Users" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="RecPrice" Type="Int32" />
+          <Property Name="detail_Price" Type="Int32" />
+          <Property Name="detail_RecPrice" Type="Int32" />
+          <Property Name="detail_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail_IsDone" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tbl_Issues" Relationship="Self.FK_tbl_OrderDetails_tbl_Issues" FromRole="tbl_OrderDetails" ToRole="tbl_Issues" />
+          <NavigationProperty Name="tbl_OrderHeader" Relationship="Self.FK_tbl_OrderDetails_tbl_OrderHeader" FromRole="tbl_OrderDetails" ToRole="tbl_OrderHeader" />
+        </EntityType>
+        <EntityType Name="tbl_OrderHeader">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="order_Date" Type="DateTime" Precision="3" />
+          <Property Name="order_Side" Type="Int32" />
+          <Property Name="order_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="order_BasePrice" Type="Int32" />
+          <Property Name="order_Dsicount" Type="Int32" />
+          <Property Name="order_Price" Type="Int32" />
+          <Property Name="user_ID" Type="Int32" />
+          <Property Name="st_ID" Type="Int32" />
+          <Property Name="sh_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_kind" Type="Int32" />
+          <Property Name="changedUserID" Type="Int32" />
+          <NavigationProperty Name="tbl_Contract" Relationship="Self.FK_tbl_Contract_tbl_OrderHeader" FromRole="tbl_OrderHeader" ToRole="tbl_Contract" />
+          <NavigationProperty Name="tbl_Customer" Relationship="Self.FK_tbl_OrderHeader_tbl_Customer" FromRole="tbl_OrderHeader" ToRole="tbl_Customer" />
+          <NavigationProperty Name="tbl_OrderDetails" Relationship="Self.FK_tbl_OrderDetails_tbl_OrderHeader" FromRole="tbl_OrderHeader" ToRole="tbl_OrderDetails" />
+          <NavigationProperty Name="tbl_OrderKind" Relationship="Self.FK_tbl_OrderHeader_tbl_OrderKind1" FromRole="tbl_OrderHeader" ToRole="tbl_OrderKind" />
+          <NavigationProperty Name="tbl_Situation" Relationship="Self.FK_tbl_OrderHeader_tbl_Situation" FromRole="tbl_OrderHeader" ToRole="tbl_Situation" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_OrderHeader_tbl_Users" FromRole="tbl_OrderHeader" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Users1" Relationship="Self.FK_tbl_OrderHeader_tbl_Users1" FromRole="tbl_OrderHeader" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_OrderKind">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="orderKind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_OrderHeader" Relationship="Self.FK_tbl_OrderHeader_tbl_OrderKind1" FromRole="tbl_OrderKind" ToRole="tbl_OrderHeader" />
+        </EntityType>
+        <EntityType Name="tbl_PrintDesigns">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="design_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="design_File" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="tbl_Contract" Relationship="Self.FK_tbl_Contract_tbl_PrintDesigns" FromRole="tbl_PrintDesigns" ToRole="tbl_Contract" />
+          <NavigationProperty Name="tbl_PrintSettings" Relationship="Self.FK_tbl_PrintSettings_tbl_PrintDesigns" FromRole="tbl_PrintDesigns" ToRole="tbl_PrintSettings" />
+        </EntityType>
+        <EntityType Name="tbl_PrintSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="PreviewBeforePrint" Type="Boolean" Nullable="false" />
+          <Property Name="LoadDesignBeforePrint" Type="Boolean" Nullable="false" />
+          <Property Name="PrintQty" Type="Byte" />
+          <Property Name="DefaultDesignID" Type="Int32" />
+          <NavigationProperty Name="tbl_PrintDesigns" Relationship="Self.FK_tbl_PrintSettings_tbl_PrintDesigns" FromRole="tbl_PrintSettings" ToRole="tbl_PrintDesigns" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_PrintSettings_tbl_Users" FromRole="tbl_PrintSettings" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Reason">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="res_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="res_Side" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ap_ID" Type="Int32" />
+          <NavigationProperty Name="tbl_Apointments" Relationship="Self.FK_tbl_Reason_tbl_Apointments" FromRole="tbl_Reason" ToRole="tbl_Apointments" />
+        </EntityType>
+        <EntityType Name="tbl_Situation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="st_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Apointments" Relationship="Self.FK_tbl_Apointments_tbl_Situation" FromRole="tbl_Situation" ToRole="tbl_Apointments" />
+          <NavigationProperty Name="tbl_OrderHeader" Relationship="Self.FK_tbl_OrderHeader_tbl_Situation" FromRole="tbl_Situation" ToRole="tbl_OrderHeader" />
+        </EntityType>
+        <EntityType Name="tbl_UserAccess">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertAccess" Type="Boolean" />
+          <Property Name="UpdateAccess" Type="Boolean" />
+          <Property Name="DeleteAccess" Type="Boolean" />
+          <Property Name="PrintAccess" Type="Boolean" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_UserAccess_tbl_Users" FromRole="tbl_UserAccess" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="vt_ID" Type="Int32" />
+          <Property Name="kind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AppSettings" Relationship="Self.FK_AppSettings_tbl_Users" FromRole="tbl_Users" ToRole="AppSettings" />
+          <NavigationProperty Name="tbl_Apointments" Relationship="Self.FK_tbl_Apointments_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Apointments" />
+          <NavigationProperty Name="tbl_Apointments1" Relationship="Self.FK_tbl_Apointments_tbl_Users1" FromRole="tbl_Users" ToRole="tbl_Apointments" />
+          <NavigationProperty Name="tbl_Contract" Relationship="Self.FK_tbl_Contract_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Contract" />
+          <NavigationProperty Name="tbl_FollowUP" Relationship="Self.FK_tbl_FollowUP_tbl_Users" FromRole="tbl_Users" ToRole="tbl_FollowUP" />
+          <NavigationProperty Name="tbl_FollowUP1" Relationship="Self.FK_tbl_FollowUP_tbl_Users1" FromRole="tbl_Users" ToRole="tbl_FollowUP" />
+          <NavigationProperty Name="tbl_OrderHeader" Relationship="Self.FK_tbl_OrderHeader_tbl_Users" FromRole="tbl_Users" ToRole="tbl_OrderHeader" />
+          <NavigationProperty Name="tbl_OrderHeader1" Relationship="Self.FK_tbl_OrderHeader_tbl_Users1" FromRole="tbl_Users" ToRole="tbl_OrderHeader" />
+          <NavigationProperty Name="tbl_PrintSettings" Relationship="Self.FK_tbl_PrintSettings_tbl_Users" FromRole="tbl_Users" ToRole="tbl_PrintSettings" />
+          <NavigationProperty Name="tbl_UserAccess" Relationship="Self.FK_tbl_UserAccess_tbl_Users" FromRole="tbl_Users" ToRole="tbl_UserAccess" />
+        </EntityType>
+        <EntityType Name="tbl_Vacations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ep_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vc_StartDate" Type="DateTime" Precision="3" />
+          <Property Name="vc_EndDate" Type="DateTime" Precision="3" />
+          <Property Name="ep_ID" Type="Int32" />
+          <Property Name="sh_StartDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sh_EndDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="startTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="endTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Experts" Relationship="Self.FK_tbl_Vacations_tbl_Experts" FromRole="tbl_Vacations" ToRole="tbl_Experts" />
+          <Property Name="ep_TimeRest" Type="Int32" />
+        </EntityType>
+        <EntityType Name="viw_ApointmentReport">
+          <Key>
+            <PropertyRef Name="cu_ID" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ep_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ap_Date" Type="DateTime" Precision="3" />
+          <Property Name="ap_Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_ID" Type="Int32" Nullable="false" />
+          <Property Name="cu_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_NationalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vt_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="st_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kind_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="viw_Contract">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="payment_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sh_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_ID" Type="Int32" />
+          <Property Name="order_BasePrice" Type="Int32" />
+          <Property Name="order_Dsicount" Type="Int32" />
+          <Property Name="order_Price" Type="Int32" />
+          <Property Name="cu_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vt_ID" Type="Int32" />
+          <Property Name="vt_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="viw_FollowUPs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="cu_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fl_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cu_NationalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cu_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vt_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fl_Date" Type="DateTime" Precision="3" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="visitorID" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_AppSettings_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="AppSettings" Type="Self.AppSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AppSettings">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_ApKinds">
+          <End Role="tbl_ApKinds" Type="Self.tbl_ApKinds" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ApKinds">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="kind_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="cu_ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="cu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Experts">
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Experts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="expert_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Situation">
+          <End Role="tbl_Situation" Type="Self.tbl_Situation" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Situation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="st_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Apointments_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Apointments">
+              <PropertyRef Name="changedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Reason_tbl_Apointments">
+          <End Role="tbl_Apointments" Type="Self.tbl_Apointments" Multiplicity="0..1" />
+          <End Role="tbl_Reason" Type="Self.tbl_Reason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Apointments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Reason">
+              <PropertyRef Name="ap_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contract_tbl_OrderHeader">
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="0..1" />
+          <End Role="tbl_Contract" Type="Self.tbl_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_OrderHeader">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Contract">
+              <PropertyRef Name="order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contract_tbl_PrintDesigns">
+          <End Role="tbl_PrintDesigns" Type="Self.tbl_PrintDesigns" Multiplicity="0..1" />
+          <End Role="tbl_Contract" Type="Self.tbl_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PrintDesigns">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Contract">
+              <PropertyRef Name="report_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Contract_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_Contract" Type="Self.tbl_Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Contract">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Customer_tbl_Experts">
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="0..1" />
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Experts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Customer">
+              <PropertyRef Name="vt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CustomerPhone_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="0..1" />
+          <End Role="tbl_CustomerPhone" Type="Self.tbl_CustomerPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="cu_ID" />
+            </Principal>
+            <Dependent Role="tbl_CustomerPhone">
+              <PropertyRef Name="cu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_FollowUP_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="0..1" />
+          <End Role="tbl_FollowUP" Type="Self.tbl_FollowUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="cu_ID" />
+            </Principal>
+            <Dependent Role="tbl_FollowUP">
+              <PropertyRef Name="cu_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="cu_ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="order_Side" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Experts_tbl_ExpertKind">
+          <End Role="tbl_ExpertKind" Type="Self.tbl_ExpertKind" Multiplicity="0..1" />
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_ExpertKind">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Experts">
+              <PropertyRef Name="ep_kind" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ExpertPhone_tbl_Experts">
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="0..1" />
+          <End Role="tbl_ExpertPhone" Type="Self.tbl_ExpertPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Experts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_ExpertPhone">
+              <PropertyRef Name="ep_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Vacations_tbl_Experts">
+          <End Role="tbl_Experts" Type="Self.tbl_Experts" Multiplicity="0..1" />
+          <End Role="tbl_Vacations" Type="Self.tbl_Vacations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Experts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Vacations">
+              <PropertyRef Name="ep_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_FollowUP_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_FollowUP" Type="Self.tbl_FollowUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_FollowUP">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_FollowUP_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_FollowUP" Type="Self.tbl_FollowUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_FollowUP">
+              <PropertyRef Name="changedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderDetails_tbl_Issues">
+          <End Role="tbl_Issues" Type="Self.tbl_Issues" Multiplicity="0..1" />
+          <End Role="tbl_OrderDetails" Type="Self.tbl_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Issues">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderDetails">
+              <PropertyRef Name="issue_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderDetails_tbl_OrderHeader">
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="0..1" />
+          <End Role="tbl_OrderDetails" Type="Self.tbl_OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_OrderHeader">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderDetails">
+              <PropertyRef Name="order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_OrderKind1">
+          <End Role="tbl_OrderKind" Type="Self.tbl_OrderKind" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_OrderKind">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="order_kind" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_Situation">
+          <End Role="tbl_Situation" Type="Self.tbl_Situation" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Situation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="st_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_OrderHeader_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_OrderHeader" Type="Self.tbl_OrderHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_OrderHeader">
+              <PropertyRef Name="changedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrintSettings_tbl_PrintDesigns">
+          <End Role="tbl_PrintDesigns" Type="Self.tbl_PrintDesigns" Multiplicity="0..1" />
+          <End Role="tbl_PrintSettings" Type="Self.tbl_PrintSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_PrintDesigns">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PrintSettings">
+              <PropertyRef Name="DefaultDesignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PrintSettings_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_PrintSettings" Type="Self.tbl_PrintSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_PrintSettings">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserAccess_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+          <End Role="tbl_UserAccess" Type="Self.tbl_UserAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_UserAccess">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppSettings" EntityType="Self.AppSettings" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tbl_ApKinds" EntityType="Self.tbl_ApKinds" />
+          <EntitySet Name="tbl_Apointments" EntityType="Self.tbl_Apointments" />
+          <EntitySet Name="tbl_ContactKind" EntityType="Self.tbl_ContactKind" />
+          <EntitySet Name="tbl_Contract" EntityType="Self.tbl_Contract" />
+          <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" />
+          <EntitySet Name="tbl_CustomerPhone" EntityType="Self.tbl_CustomerPhone" />
+          <EntitySet Name="tbl_ExpertKind" EntityType="Self.tbl_ExpertKind" />
+          <EntitySet Name="tbl_ExpertPhone" EntityType="Self.tbl_ExpertPhone" />
+          <EntitySet Name="tbl_Experts" EntityType="Self.tbl_Experts" />
+          <EntitySet Name="tbl_FollowUP" EntityType="Self.tbl_FollowUP" />
+          <EntitySet Name="tbl_Issues" EntityType="Self.tbl_Issues" />
+          <EntitySet Name="tbl_OrderDetails" EntityType="Self.tbl_OrderDetails" />
+          <EntitySet Name="tbl_OrderHeader" EntityType="Self.tbl_OrderHeader" />
+          <EntitySet Name="tbl_OrderKind" EntityType="Self.tbl_OrderKind" />
+          <EntitySet Name="tbl_PrintDesigns" EntityType="Self.tbl_PrintDesigns" />
+          <EntitySet Name="tbl_PrintSettings" EntityType="Self.tbl_PrintSettings" />
+          <EntitySet Name="tbl_Reason" EntityType="Self.tbl_Reason" />
+          <EntitySet Name="tbl_Situation" EntityType="Self.tbl_Situation" />
+          <EntitySet Name="tbl_UserAccess" EntityType="Self.tbl_UserAccess" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" />
+          <EntitySet Name="tbl_Vacations" EntityType="Self.tbl_Vacations" />
+          <EntitySet Name="viw_ApointmentReport" EntityType="Self.viw_ApointmentReport" />
+          <EntitySet Name="viw_Contract" EntityType="Self.viw_Contract" />
+          <EntitySet Name="viw_FollowUPs" EntityType="Self.viw_FollowUPs" />
+          <AssociationSet Name="FK_AppSettings_tbl_Users" Association="Self.FK_AppSettings_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="AppSettings" EntitySet="AppSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_ApKinds" Association="Self.FK_tbl_Apointments_tbl_ApKinds">
+            <End Role="tbl_ApKinds" EntitySet="tbl_ApKinds" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Customer" Association="Self.FK_tbl_Apointments_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Experts" Association="Self.FK_tbl_Apointments_tbl_Experts">
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Situation" Association="Self.FK_tbl_Apointments_tbl_Situation">
+            <End Role="tbl_Situation" EntitySet="tbl_Situation" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Users" Association="Self.FK_tbl_Apointments_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Apointments_tbl_Users1" Association="Self.FK_tbl_Apointments_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Reason_tbl_Apointments" Association="Self.FK_tbl_Reason_tbl_Apointments">
+            <End Role="tbl_Apointments" EntitySet="tbl_Apointments" />
+            <End Role="tbl_Reason" EntitySet="tbl_Reason" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contract_tbl_OrderHeader" Association="Self.FK_tbl_Contract_tbl_OrderHeader">
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+            <End Role="tbl_Contract" EntitySet="tbl_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contract_tbl_PrintDesigns" Association="Self.FK_tbl_Contract_tbl_PrintDesigns">
+            <End Role="tbl_PrintDesigns" EntitySet="tbl_PrintDesigns" />
+            <End Role="tbl_Contract" EntitySet="tbl_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Contract_tbl_Users" Association="Self.FK_tbl_Contract_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Contract" EntitySet="tbl_Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Customer_tbl_Experts" Association="Self.FK_tbl_Customer_tbl_Experts">
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CustomerPhone_tbl_Customer" Association="Self.FK_tbl_CustomerPhone_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_CustomerPhone" EntitySet="tbl_CustomerPhone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_FollowUP_tbl_Customer" Association="Self.FK_tbl_FollowUP_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_FollowUP" EntitySet="tbl_FollowUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_Customer" Association="Self.FK_tbl_OrderHeader_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Experts_tbl_ExpertKind" Association="Self.FK_tbl_Experts_tbl_ExpertKind">
+            <End Role="tbl_ExpertKind" EntitySet="tbl_ExpertKind" />
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ExpertPhone_tbl_Experts" Association="Self.FK_tbl_ExpertPhone_tbl_Experts">
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+            <End Role="tbl_ExpertPhone" EntitySet="tbl_ExpertPhone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Vacations_tbl_Experts" Association="Self.FK_tbl_Vacations_tbl_Experts">
+            <End Role="tbl_Experts" EntitySet="tbl_Experts" />
+            <End Role="tbl_Vacations" EntitySet="tbl_Vacations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_FollowUP_tbl_Users" Association="Self.FK_tbl_FollowUP_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_FollowUP" EntitySet="tbl_FollowUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_FollowUP_tbl_Users1" Association="Self.FK_tbl_FollowUP_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_FollowUP" EntitySet="tbl_FollowUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderDetails_tbl_Issues" Association="Self.FK_tbl_OrderDetails_tbl_Issues">
+            <End Role="tbl_Issues" EntitySet="tbl_Issues" />
+            <End Role="tbl_OrderDetails" EntitySet="tbl_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderDetails_tbl_OrderHeader" Association="Self.FK_tbl_OrderDetails_tbl_OrderHeader">
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+            <End Role="tbl_OrderDetails" EntitySet="tbl_OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_OrderKind1" Association="Self.FK_tbl_OrderHeader_tbl_OrderKind1">
+            <End Role="tbl_OrderKind" EntitySet="tbl_OrderKind" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_Situation" Association="Self.FK_tbl_OrderHeader_tbl_Situation">
+            <End Role="tbl_Situation" EntitySet="tbl_Situation" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_Users" Association="Self.FK_tbl_OrderHeader_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_OrderHeader_tbl_Users1" Association="Self.FK_tbl_OrderHeader_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_OrderHeader" EntitySet="tbl_OrderHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrintSettings_tbl_PrintDesigns" Association="Self.FK_tbl_PrintSettings_tbl_PrintDesigns">
+            <End Role="tbl_PrintDesigns" EntitySet="tbl_PrintDesigns" />
+            <End Role="tbl_PrintSettings" EntitySet="tbl_PrintSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PrintSettings_tbl_Users" Association="Self.FK_tbl_PrintSettings_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_PrintSettings" EntitySet="tbl_PrintSettings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserAccess_tbl_Users" Association="Self.FK_tbl_UserAccess_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_UserAccess" EntitySet="tbl_UserAccess" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OfficeDBModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AppSettings">
+            <EntityTypeMapping TypeName="OfficeDBModel.AppSettings">
+              <MappingFragment StoreEntitySet="AppSettings">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="ShowApointmentInStart" ColumnName="ShowApointmentInStart" />
+                <ScalarProperty Name="ShowFollowInStart" ColumnName="ShowFollowInStart" />
+                <ScalarProperty Name="ShowRestInStart" ColumnName="ShowRestInStart" />
+                <ScalarProperty Name="ShowDiscountInPaymentText" ColumnName="ShowDiscountInPaymentText" />
+                <ScalarProperty Name="SaveSizes" ColumnName="SaveSizes" />
+                <ScalarProperty Name="WarningRestInApointment" ColumnName="WarningRestInApointment" />
+                <ScalarProperty Name="AutoDefaultPaymentText" ColumnName="AutoDefaultPaymentText" />
+                <ScalarProperty Name="SaveGridLayout" ColumnName="SaveGridLayout" />
+                <ScalarProperty Name="ShowNextApointmentInExit" ColumnName="ShowNextApointmentInExit" />
+                <ScalarProperty Name="ShowNextFollowInExit" ColumnName="ShowNextFollowInExit" />
+                <ScalarProperty Name="ShowNextRestInExit" ColumnName="ShowNextRestInExit" />
+                <ScalarProperty Name="ShowApointmentInInsert" ColumnName="ShowApointmentInInsert" />
+                <ScalarProperty Name="InsertContractAfterOrder" ColumnName="InsertContractAfterOrder" />
+                <ScalarProperty Name="PrintQty" ColumnName="PrintQty" />
+                <ScalarProperty Name="GridPaging" ColumnName="GridPaging" />
+                <ScalarProperty Name="PagingQty" ColumnName="PagingQty" />
+                <ScalarProperty Name="ShowAllCustomer" ColumnName="ShowAllCustomer" />
+                <ScalarProperty Name="LoadVisitorInCustomerDefine" ColumnName="LoadVisitorInCustomerDefine" />
+                <ScalarProperty Name="CashPaymentText" ColumnName="CashPaymentText" />
+                <ScalarProperty Name="MixPaymentText" ColumnName="MixPaymentText" />
+                <ScalarProperty Name="TimeInterval" ColumnName="TimeInterval" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="OfficeDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ApKinds">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_ApKinds">
+              <MappingFragment StoreEntitySet="tbl_ApKinds">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="kind_Name" ColumnName="kind_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Apointments">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_Apointments">
+              <MappingFragment StoreEntitySet="tbl_Apointments">
+                <ScalarProperty Name="cu_Phone" ColumnName="cu_Phone" />
+                <ScalarProperty Name="cu_Name" ColumnName="cu_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="kind_ID" ColumnName="kind_ID" />
+                <ScalarProperty Name="ap_Date" ColumnName="ap_Date" />
+                <ScalarProperty Name="ap_Area" ColumnName="ap_Area" />
+                <ScalarProperty Name="cu_ID" ColumnName="cu_ID" />
+                <ScalarProperty Name="expert_ID" ColumnName="expert_ID" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="st_ID" ColumnName="st_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="changedUserID" ColumnName="changedUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ContactKind">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_ContactKind">
+              <MappingFragment StoreEntitySet="tbl_ContactKind">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KindName" ColumnName="KindName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Contract">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_Contract">
+              <MappingFragment StoreEntitySet="tbl_Contract">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="order_ID" ColumnName="order_ID" />
+                <ScalarProperty Name="payment_Text" ColumnName="payment_Text" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="report_ID" ColumnName="report_ID" />
+                <ScalarProperty Name="sh_Date" ColumnName="sh_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Customer">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_Customer">
+              <MappingFragment StoreEntitySet="tbl_Customer">
+                <ScalarProperty Name="cu_ID" ColumnName="cu_ID" />
+                <ScalarProperty Name="cu_Name" ColumnName="cu_Name" />
+                <ScalarProperty Name="cu_NationalCode" ColumnName="cu_NationalCode" />
+                <ScalarProperty Name="cu_Email" ColumnName="cu_Email" />
+                <ScalarProperty Name="cu_Address" ColumnName="cu_Address" />
+                <ScalarProperty Name="vt_ID" ColumnName="vt_ID" />
+                <ScalarProperty Name="vt_Name" ColumnName="vt_Name" />
+                <ScalarProperty Name="cu_CustomName" ColumnName="cu_CustomName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CustomerPhone">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_CustomerPhone">
+              <MappingFragment StoreEntitySet="tbl_CustomerPhone">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="cu_ID" ColumnName="cu_ID" />
+                <ScalarProperty Name="cu_Field" ColumnName="cu_Field" />
+                <ScalarProperty Name="cu_Data" ColumnName="cu_Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ExpertKind">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_ExpertKind">
+              <MappingFragment StoreEntitySet="tbl_ExpertKind">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ExpertKind" ColumnName="ExpertKind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ExpertPhone">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_ExpertPhone">
+              <MappingFragment StoreEntitySet="tbl_ExpertPhone">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ep_ID" ColumnName="ep_ID" />
+                <ScalarProperty Name="ep_Field" ColumnName="ep_Field" />
+                <ScalarProperty Name="ep_Data" ColumnName="ep_Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Experts">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_Experts">
+              <MappingFragment StoreEntitySet="tbl_Experts">
+                <ScalarProperty Name="ep_DailyTimeWork" ColumnName="ep_DailyTimeWork" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ep_Name" ColumnName="ep_Name" />
+                <ScalarProperty Name="ep_NationalCode" ColumnName="ep_NationalCode" />
+                <ScalarProperty Name="ep_Address" ColumnName="ep_Address" />
+                <ScalarProperty Name="ep_IsActive" ColumnName="ep_IsActive" />
+                <ScalarProperty Name="ep_kind" ColumnName="ep_kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FollowUP">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_FollowUP">
+              <MappingFragment StoreEntitySet="tbl_FollowUP">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fl_Text" ColumnName="fl_Text" />
+                <ScalarProperty Name="fl_Date" ColumnName="fl_Date" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="cu_ID" ColumnName="cu_ID" />
+                <ScalarProperty Name="changedUserID" ColumnName="changedUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Issues">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_Issues">
+              <MappingFragment StoreEntitySet="tbl_Issues">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="issue_Name" ColumnName="issue_Name" />
+                <ScalarProperty Name="issue_Price" ColumnName="issue_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_OrderDetails">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_OrderDetails">
+              <MappingFragment StoreEntitySet="tbl_OrderDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="order_ID" ColumnName="order_ID" />
+                <ScalarProperty Name="recID" ColumnName="recID" />
+                <ScalarProperty Name="issue_ID" ColumnName="issue_ID" />
+                <ScalarProperty Name="issue_Name" ColumnName="issue_Name" />
+                <ScalarProperty Name="detail_Qty" ColumnName="detail_Qty" />
+                <ScalarProperty Name="detail_Discount" ColumnName="detail_Discount" />
+                <ScalarProperty Name="detail_Discount_Per" ColumnName="detail_Discount_Per" />
+                <ScalarProperty Name="detail_Users" ColumnName="detail_Users" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="RecPrice" ColumnName="RecPrice" />
+                <ScalarProperty Name="detail_Price" ColumnName="detail_Price" />
+                <ScalarProperty Name="detail_RecPrice" ColumnName="detail_RecPrice" />
+                <ScalarProperty Name="detail_Comment" ColumnName="detail_Comment" />
+                <ScalarProperty Name="detail_IsDone" ColumnName="detail_IsDone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_OrderHeader">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_OrderHeader">
+              <MappingFragment StoreEntitySet="tbl_OrderHeader">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="order_Date" ColumnName="order_Date" />
+                <ScalarProperty Name="order_Side" ColumnName="order_Side" />
+                <ScalarProperty Name="order_Comment" ColumnName="order_Comment" />
+                <ScalarProperty Name="order_BasePrice" ColumnName="order_BasePrice" />
+                <ScalarProperty Name="order_Dsicount" ColumnName="order_Dsicount" />
+                <ScalarProperty Name="order_Price" ColumnName="order_Price" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="st_ID" ColumnName="st_ID" />
+                <ScalarProperty Name="sh_Date" ColumnName="sh_Date" />
+                <ScalarProperty Name="order_kind" ColumnName="order_kind" />
+                <ScalarProperty Name="changedUserID" ColumnName="changedUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_OrderKind">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_OrderKind">
+              <MappingFragment StoreEntitySet="tbl_OrderKind">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="orderKind" ColumnName="orderKind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PrintDesigns">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_PrintDesigns">
+              <MappingFragment StoreEntitySet="tbl_PrintDesigns">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="design_Name" ColumnName="design_Name" />
+                <ScalarProperty Name="design_File" ColumnName="design_File" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PrintSettings">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_PrintSettings">
+              <MappingFragment StoreEntitySet="tbl_PrintSettings">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PreviewBeforePrint" ColumnName="PreviewBeforePrint" />
+                <ScalarProperty Name="LoadDesignBeforePrint" ColumnName="LoadDesignBeforePrint" />
+                <ScalarProperty Name="PrintQty" ColumnName="PrintQty" />
+                <ScalarProperty Name="DefaultDesignID" ColumnName="DefaultDesignID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Reason">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_Reason">
+              <MappingFragment StoreEntitySet="tbl_Reason">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="res_Text" ColumnName="res_Text" />
+                <ScalarProperty Name="res_Side" ColumnName="res_Side" />
+                <ScalarProperty Name="ap_ID" ColumnName="ap_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Situation">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_Situation">
+              <MappingFragment StoreEntitySet="tbl_Situation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="st_Name" ColumnName="st_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserAccess">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_UserAccess">
+              <MappingFragment StoreEntitySet="tbl_UserAccess">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="InsertAccess" ColumnName="InsertAccess" />
+                <ScalarProperty Name="UpdateAccess" ColumnName="UpdateAccess" />
+                <ScalarProperty Name="DeleteAccess" ColumnName="DeleteAccess" />
+                <ScalarProperty Name="PrintAccess" ColumnName="PrintAccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="vt_ID" ColumnName="vt_ID" />
+                <ScalarProperty Name="kind" ColumnName="kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Vacations">
+            <EntityTypeMapping TypeName="OfficeDBModel.tbl_Vacations">
+              <MappingFragment StoreEntitySet="tbl_Vacations">
+                <ScalarProperty Name="ep_TimeRest" ColumnName="ep_TimeRest" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ep_Name" ColumnName="ep_Name" />
+                <ScalarProperty Name="vc_StartDate" ColumnName="vc_StartDate" />
+                <ScalarProperty Name="vc_EndDate" ColumnName="vc_EndDate" />
+                <ScalarProperty Name="ep_ID" ColumnName="ep_ID" />
+                <ScalarProperty Name="sh_StartDate" ColumnName="sh_StartDate" />
+                <ScalarProperty Name="sh_EndDate" ColumnName="sh_EndDate" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viw_ApointmentReport">
+            <EntityTypeMapping TypeName="OfficeDBModel.viw_ApointmentReport">
+              <MappingFragment StoreEntitySet="viw_ApointmentReport">
+                <ScalarProperty Name="ep_Name" ColumnName="ep_Name" />
+                <ScalarProperty Name="ap_Date" ColumnName="ap_Date" />
+                <ScalarProperty Name="ap_Area" ColumnName="ap_Area" />
+                <ScalarProperty Name="cu_ID" ColumnName="cu_ID" />
+                <ScalarProperty Name="cu_Name" ColumnName="cu_Name" />
+                <ScalarProperty Name="cu_NationalCode" ColumnName="cu_NationalCode" />
+                <ScalarProperty Name="cu_Email" ColumnName="cu_Email" />
+                <ScalarProperty Name="cu_Address" ColumnName="cu_Address" />
+                <ScalarProperty Name="vt_Name" ColumnName="vt_Name" />
+                <ScalarProperty Name="st_Name" ColumnName="st_Name" />
+                <ScalarProperty Name="kind_Name" ColumnName="kind_Name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viw_Contract">
+            <EntityTypeMapping TypeName="OfficeDBModel.viw_Contract">
+              <MappingFragment StoreEntitySet="viw_Contract">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="payment_Text" ColumnName="payment_Text" />
+                <ScalarProperty Name="sh_Date" ColumnName="sh_Date" />
+                <ScalarProperty Name="order_ID" ColumnName="order_ID" />
+                <ScalarProperty Name="order_BasePrice" ColumnName="order_BasePrice" />
+                <ScalarProperty Name="order_Dsicount" ColumnName="order_Dsicount" />
+                <ScalarProperty Name="order_Price" ColumnName="order_Price" />
+                <ScalarProperty Name="cu_Name" ColumnName="cu_Name" />
+                <ScalarProperty Name="vt_ID" ColumnName="vt_ID" />
+                <ScalarProperty Name="vt_Name" ColumnName="vt_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viw_FollowUPs">
+            <EntityTypeMapping TypeName="OfficeDBModel.viw_FollowUPs">
+              <MappingFragment StoreEntitySet="viw_FollowUPs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="cu_Name" ColumnName="cu_Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="fl_Text" ColumnName="fl_Text" />
+                <ScalarProperty Name="cu_NationalCode" ColumnName="cu_NationalCode" />
+                <ScalarProperty Name="cu_Email" ColumnName="cu_Email" />
+                <ScalarProperty Name="cu_Address" ColumnName="cu_Address" />
+                <ScalarProperty Name="vt_Name" ColumnName="vt_Name" />
+                <ScalarProperty Name="fl_Date" ColumnName="fl_Date" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="visitorID" ColumnName="visitorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

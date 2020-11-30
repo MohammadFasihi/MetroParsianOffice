@@ -1,0 +1,20 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:local="clr-namespace:ParsianOffice.Windows"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" x:Class="ParsianOffice.Windows.winDisplay"
+        mc:Ignorable="d" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen"  Closing="Window_Closing"
+        Title="نمایش اطلاعات" Height="489.792" Width="638.362">
+    <Grid FlowDirection="RightToLeft">
+        <dxg:GridControl FontFamily="B Yekan" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Name="grdMain" MouseDoubleClick="grdMain_MouseDoubleClick">
+            <dxg:GridControl.View>
+                <dxg:TableView AllowEditing="False" ShowTotalSummary="True" ShowAutoFilterRow="True" AutoWidth="True" ShowCriteriaInAutoFilterRow="True" ShowGroupPanel="False" ColumnChooserColumnDisplayMode="ShowHiddenColumnsOnly"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+
+    </Grid>
+</Window>

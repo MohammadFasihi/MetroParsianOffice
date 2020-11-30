@@ -1,0 +1,23 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParsianOffice.Windows"
+        xmlns:dxprg="http://schemas.devexpress.com/winfx/2008/xaml/propertygrid" x:Class="ParsianOffice.Windows.winGridColumnSetting"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="تنظیمات" Height="481.091" Width="431.013" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="143"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer FlowDirection="LeftToRight" Margin="0,0,0,30">
+            <ListBox x:Name="lstColumnName" FlowDirection="RightToLeft" Grid.Column="0" MouseDoubleClick="lstColumnName_MouseDoubleClick"/>
+        </ScrollViewer>
+        <Button Grid.Column="0" Name="btnAddColumn" Click="btnAddColumn_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="30" Content="+"/>
+        <Button Grid.Column="0" Name="btnDelColumn" Click="btnDelColumn_Click" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="30" Margin="50,0,0,0" Content="-"/>
+        <dxprg:PropertyGridControl FlowDirection="LeftToRight" Grid.Column="1" Name="propColumn"/>
+
+    </Grid>
+</Window>

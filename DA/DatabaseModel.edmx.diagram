@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b2f3b150d5814ccb970a67f3109c0ae9" Name="Diagram1">
+        <EntityTypeShape EntityType="OfficeDBModel.AppSettings" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_ApKinds" Width="1.5" PointX="3.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_Apointments" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_ContactKind" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_Contract" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_Customer" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_CustomerPhone" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_ExpertKind" Width="1.5" PointX="1.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_ExpertPhone" Width="1.5" PointX="3.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_Experts" Width="1.5" PointX="1.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_FollowUP" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_Issues" Width="1.5" PointX="9" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_OrderDetails" Width="1.5" PointX="11.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_OrderHeader" Width="1.5" PointX="9" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_OrderKind" Width="1.5" PointX="6.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_PrintDesigns" Width="1.5" PointX="0.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_PrintSettings" Width="1.5" PointX="6" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_Reason" Width="1.5" PointX="8.25" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_Situation" Width="1.5" PointX="3.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_UserAccess" Width="1.5" PointX="3" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_Users" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.tbl_Vacations" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.viw_ApointmentReport" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.viw_Contract" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OfficeDBModel.viw_FollowUPs" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="OfficeDBModel.FK_AppSettings_tbl_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Apointments_tbl_ApKinds" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Apointments_tbl_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Apointments_tbl_Experts" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Apointments_tbl_Situation" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Apointments_tbl_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Apointments_tbl_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Reason_tbl_Apointments" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Contract_tbl_OrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Contract_tbl_PrintDesigns" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Contract_tbl_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Customer_tbl_Experts" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_CustomerPhone_tbl_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_FollowUP_tbl_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_OrderHeader_tbl_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Experts_tbl_ExpertKind" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_ExpertPhone_tbl_Experts" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_Vacations_tbl_Experts" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_FollowUP_tbl_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_FollowUP_tbl_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_OrderDetails_tbl_Issues" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_OrderDetails_tbl_OrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_OrderHeader_tbl_OrderKind1" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_OrderHeader_tbl_Situation" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_OrderHeader_tbl_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_OrderHeader_tbl_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_PrintSettings_tbl_PrintDesigns" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_PrintSettings_tbl_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="OfficeDBModel.FK_tbl_UserAccess_tbl_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

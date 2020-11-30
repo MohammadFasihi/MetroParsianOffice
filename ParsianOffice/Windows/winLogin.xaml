@@ -1,0 +1,44 @@
+﻿<Window x:Class="ParsianOffice.Windows.winLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" ResizeMode="NoResize"
+        xmlns:local="clr-namespace:ParsianOffice.Windows" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closed="Window_Closed"
+        mc:Ignorable="d"
+        Title="ورود کاربر" Height="252.681" Width="514.16">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.Background>
+            <RadialGradientBrush RadiusY="1.014" RadiusX="1.014">
+                <GradientStop Color="White"/>
+                <GradientStop Color="#FF213374" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Button Content="ورود کاربر" Name="btnLogin" Click="btnLogin_Click" Margin="0,48,10,0" FontFamily="B Yekan"  HorizontalAlignment="Right" Width="79" Height="29" VerticalAlignment="Top" IsDefault="True"/>
+        <Button Content="خروج" Name="btnExit" Click="btnExit_Click" FontFamily="B Yekan"  Margin="0,89,10,0" HorizontalAlignment="Right" Width="79" Height="29" VerticalAlignment="Top"  IsCancel="True"/>
+        <TabControl Margin="10,21.971,104.255,14.397" Controls:TabControlHelper.IsUnderlined="True" >
+            <TabItem Header="اطلاعات کاربر" FontFamily="B Yekan" Controls:ControlsHelper.HeaderFontSize="14">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock Text="نام کاربری" Margin="10,43.331,0,0" HorizontalAlignment="Left" Width="47.217" Height="19.879" VerticalAlignment="Top"/>
+                    <ComboBox Name="cmbUsername" FontFamily="B Yekan" Margin="69,43,53,0" Height="24" IsEditable="True" VerticalAlignment="Top" VerticalContentAlignment="Center" GotFocus="cmbUsername_GotFocus"/>
+
+                    <PasswordBox Controls:TextBoxHelper.ClearTextButton="True" Controls:PasswordBoxHelper.CapsLockWarningToolTip="دکمه Caps Lock فعال می باشد" Name="txtPassword" Margin="68.585,71.576,52.924,0" Height="20.757" VerticalAlignment="Top"  VerticalContentAlignment="Center"  GotFocus="txtPassword_GotFocus"/>
+                    <TextBlock Text="رمز عبور" Margin="10,72.454,0,0" HorizontalAlignment="Left" Width="47.217" Height="19.879" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="اتصالات" FontFamily="B Yekan" Controls:ControlsHelper.HeaderFontSize="14">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock Text="نام دیتابیس" Margin="11.415,34.67,0,0" HorizontalAlignment="Left" Width="58.539" Height="22.002" VerticalAlignment="Top"/>
+                    <TextBox Name="txtDatabase" FlowDirection="LeftToRight" IsReadOnly="True"  Margin="76,38,64,0"  Height="19" VerticalAlignment="Top"/>
+
+                    <TextBlock Text="نام سرور" Margin="11.415,61.672,0,0" HorizontalAlignment="Left" Width="58.539" Height="22.003" VerticalAlignment="Top"/>
+                    <TextBox Name="txtServer" FlowDirection="LeftToRight" IsReadOnly="True"  Margin="76,65,64,0"  Height="19" VerticalAlignment="Top"/>
+                    <Button Click="Button_Click"  Margin="0,64.504,37.311,0" HorizontalAlignment="Right" Width="20.047" Height="19.171" VerticalAlignment="Top"  Style="{DynamicResource NewButtonStyle}">
+                        <Image Source="pack://application:,,,/ParsianOffice;component/Pics/if_server_settings_103343.ico"/>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

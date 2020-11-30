@@ -1,0 +1,221 @@
+﻿<Window x:Class="ParsianOffice.Windows.winUsersSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:ParsianOffice.Windows"
+        mc:Ignorable="d" Loaded="Window_Loaded" Closing="Window_Closing"
+        Title="تنظیمات کاربران" Height="559.172" Width="549.409">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="38"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel VerticalAlignment="Top" Height="32">
+            <Menu FontFamily="B Yekan">
+                <MenuItem Header="ایجاد کاربر" Name="addUser" Click="addUser_Click"/>
+            </Menu>
+        </DockPanel>
+
+        <GroupBox Header="لیست کاربران"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="150" Height="175" FontFamily="B Yekan" Margin="0,30,0,0">
+            <ListView Name="lst" MouseDoubleClick="lst_MouseDoubleClick" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        </GroupBox>
+
+        <GroupBox Header="اطلاعات کاربر" FontFamily="B Yekan" VerticalAlignment="Top" Margin="0,30,150,0" Height="175">
+            <Grid>
+
+                <TextBlock Text="نام کاربری" VerticalAlignment="Top" Margin="0,10,0,0" Grid.ColumnSpan="2"/>
+                <TextBox Name="txtUsername" VerticalAlignment="Top" Margin="50,10,0,0" Grid.ColumnSpan="2"/>
+
+                <TextBlock Text="رمز عبور" VerticalAlignment="Top" Margin="0,40,0,0" Grid.ColumnSpan="2"/>
+                <PasswordBox Name="txtPassword" VerticalAlignment="Top" Margin="50,40,0,0" Grid.ColumnSpan="2"/>
+
+                <CheckBox Name="chkActive" VerticalAlignment="Top" Margin="0,70,0,0" Content="فعال" FontFamily="B Yekan"/>
+
+                <RadioButton Name="radAdmin" VerticalAlignment="Top" Margin="0,100,0,0" Content="کاربر مدیر" FontFamily="B Yekan"/>
+                <RadioButton Name="radUser" VerticalAlignment="Top" Margin="100,100,0,0" Content="کاربر عادی" FontFamily="B Yekan"/>
+            </Grid>
+        </GroupBox>
+
+        <CheckBox Name="chkSelectAll" FontFamily="B Yekan" VerticalAlignment="Top" HorizontalAlignment="Right" Content="انتخاب همه" Margin="0,240,20,0" Panel.ZIndex="1" Checked="chkSelectAll_Checked" Unchecked="chkSelectAll_Checked" Height="18" Width="74"/>
+
+        <GroupBox Header="دسترسی کاربر" FontFamily="B Yekan" Margin="0,205,0,0">
+            <TabControl FontFamily="B Yekan" Name="tab">
+                <TabItem Header="معرفی" Controls:ControlsHelper.HeaderFontSize="14">
+                    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Orientation="Horizontal">
+                            <GroupBox Header="نسخه ها" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkIssueAccess" Checked="chkIssueAccess_Checked" Unchecked="chkIssueAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbIssue">
+                                        <StackPanel>
+                                            <CheckBox Name="chkIssueInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkIssueUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkIssueDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="بازاریاب ها" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkVisitorAccess" Checked="chkVisitorAccess_Checked" Unchecked="chkVisitorAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbVisitor">
+                                        <StackPanel>
+                                            <CheckBox Name="chkVisitorInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkVisitorUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkVisitorDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="کارشناس ها" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkExpertAccess" Checked="chkExpertAccess_Checked" Unchecked="chkExpertAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbExpert">
+                                        <StackPanel>
+                                            <CheckBox Name="chkExpertInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkExpertUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkExpertDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="مشتری ها" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkCustomerAccess" Checked="chkCustomerAccess_Checked" Unchecked="chkCustomerAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbCustomer">
+                                        <StackPanel>
+                                            <CheckBox Name="chkCustomerInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkCustomerUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkCustomerDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="ثبت ها" Controls:ControlsHelper.HeaderFontSize="14">
+                    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Orientation="Horizontal">
+                            <GroupBox Header="قرار ملاقات ها" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkApointmentAccess" Checked="chkApointmentAccess_Checked" Unchecked="chkApointmentAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbApointment">
+                                        <StackPanel>
+                                            <CheckBox Name="chkApointmentInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkApointmentUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkApointmentDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="پیگیری ها" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkFollowUpAccess" Checked="chkFollowUpAccess_Checked" Unchecked="chkFollowUpAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbFollowUp">
+                                        <StackPanel>
+                                            <CheckBox Name="chkFollowUpInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkFollowUpUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkFollowUpDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="فاکتور فروش" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkSaleAccess" Checked="chkSaleAccess_Checked" Unchecked="chkSaleAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbSale">
+                                        <StackPanel>
+                                            <CheckBox Name="chkSaleInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkSaleUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkSaleDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="فاکتور مرجوعی" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkReturnAccess" Checked="chkReturnAccess_Checked" Unchecked="chkReturnAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbReturn">
+                                        <StackPanel>
+                                            <CheckBox Name="chkReturnInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkReturnUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkReturnDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="مرخصی ها" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkRestAccess" Checked="chkRestAccess_Checked" Unchecked="chkRestAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbRest">
+                                        <StackPanel>
+                                            <CheckBox Name="chkRestInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkRestUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkRestDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="قرارداد ها" Width="150">
+                                <StackPanel>
+                                    <CheckBox FontFamily="B Yekan" Content="دسترسی" Name="chkContractAccess" Checked="chkContractAccess_Checked" Unchecked="chkContractAccess_Unchecked"/>
+                                    <GroupBox Header="عملیات" Name="gbContract">
+                                        <StackPanel>
+                                            <CheckBox Name="chkContractInsert" Content="ایجاد" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkContractUpdate" Content="ویرایش" FontFamily="B Yekan"/>
+                                            <CheckBox Name="chkContractDelete" Content="حذف" FontFamily="B Yekan"/>
+                                        </StackPanel>
+                                    </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="گزارشات" Controls:ControlsHelper.HeaderFontSize="14">
+                    <GroupBox Header="دسترسی گزارشات">
+                        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <CheckBox Name="chkExpertApointmentReport" Content="لیست قرار کارشناسان" FontFamily="B Yekan"/>
+                                    <CheckBox Name="chkTodayApointmentReport" Content="لیست قرارهای روز" FontFamily="B Yekan"/>
+                                    <CheckBox Name="chkNextDayApointmentReport" Content="لیست قرارهای روز آینده" FontFamily="B Yekan"/>
+                                    <CheckBox Name="chkCustomerApointmentReport" Content="لیست قرارهای مشتری" FontFamily="B Yekan"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <CheckBox Name="chkFollowUpReport" Content="لیست پیگیری ها" FontFamily="B Yekan"/>
+                                    <CheckBox Name="chkTodayFollowUpReport" Content="لیست پیگیری های روز" FontFamily="B Yekan"/>
+                                    <CheckBox Name="chkRestReport" Content="لیست مرخصی ها" FontFamily="B Yekan"/>
+                                    <CheckBox Name="chkVisitorSaleReport" Content="لیست فروش بازاریاب" FontFamily="B Yekan"/>
+                                    <CheckBox Name="chkSaleReport" Content="لیست فروش" FontFamily="B Yekan"/>
+                                </StackPanel>
+                            </Grid>
+                        </ScrollViewer>
+                    </GroupBox>
+                </TabItem>
+                <TabItem Header="تنظیمات" Controls:ControlsHelper.HeaderFontSize="14">
+                    <GroupBox Header="دسترسی تنظیمات">
+                        <StackPanel Margin="0,0,0,0">
+                            <CheckBox Name="chkBackup" Content="بک آپ گیری" FontFamily="B Yekan"/>
+                            <CheckBox Name="chkRestor" Content="بازیابی اطلاعات" FontFamily="B Yekan"/>
+                            <CheckBox Name="chkUsersSettings" Content="مدیریت کاربران" FontFamily="B Yekan"/>
+                        </StackPanel>
+                    </GroupBox>
+                </TabItem>
+            </TabControl>
+        </GroupBox>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="btnSave" Click="btnSave_Click" Content="ذخیره"  Margin="10,5" Width="70" FontFamily="B Yekan" HorizontalAlignment="Right"/>
+            <Button x:Name="btnDelete" Click="btnDelete_Click" Content="حذف" Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Center"/>
+            <Button x:Name="btnCancel" IsCancel="True" Click="btnCancel_Click" Content="خروج" Margin="10,5" Width="70" FontFamily="B Yekan" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</Window>

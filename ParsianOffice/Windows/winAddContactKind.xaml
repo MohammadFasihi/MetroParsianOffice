@@ -1,0 +1,13 @@
+﻿<Window x:Class="ParsianOffice.Windows.winAddContactKind"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" ResizeMode="NoResize"
+        xmlns:local="clr-namespace:ParsianOffice.Windows"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="افزودن مشخصات" Height="348.624" Width="256.881" WindowStartupLocation="CenterScreen">
+    <Grid FlowDirection="RightToLeft">
+        <telerik:RadGridView FontFamily="B Yekan" IsTabStop="False" Name="grdMain"  DataLoadMode="Asynchronous" CanUserDeleteRows="True" GroupRenderMode="Flat" NewRowPosition="Bottom" CanUserInsertRows="True" IsReadOnly="False" ShowGroupPanel="False" Deleting="grdMain_Deleting" RowEditEnded="grdMain_RowEditEnded"/>
+    </Grid>
+</Window>

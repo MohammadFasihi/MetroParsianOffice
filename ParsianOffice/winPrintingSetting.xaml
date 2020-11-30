@@ -1,0 +1,43 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParsianOffice"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="ParsianOffice.winPrintingSetting"
+        Loaded="Window_Loaded" Closing="Window_Closing" ResizeMode="CanResizeWithGrip"
+        mc:Ignorable="d"
+        Title="تنظیمات چاپ" Height="231.598" Width="352.366">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="41"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="طرح پیشفرض" FontFamily="B Yekan" VerticalAlignment="Top" Margin="30,5,0,0" Height="18"/>
+        <ComboBox x:Name="lueDesign" VerticalAlignment="Top" Margin="100,5,50,0" IsEditable="True" FontFamily="B Yekan" Height="28"/>
+        <StackPanel Margin="10,40,0,0">
+            <CheckBox Content="پیش نمایش قبل از چاپ" x:Name="chkPreviewBeforePrint" FontFamily="B Yekan" Margin="0,1,0,0"/>
+            <CheckBox Content="نمایش طرح ها قبل از چاپ" x:Name="chkLoadDesignPrint" FontFamily="B Yekan" Margin="0,1,0,0"/>
+            <Grid Margin="0,5,0,0">
+                <TextBlock Text="تعداد چاپ" FontFamily="B Yekan"/>
+                <TextBox x:Name="txtPrintQty" Margin="60,0,0,0" FontFamily="B Yekan" HorizontalAlignment="Left" Width="37"/>
+            </Grid>
+
+
+
+            <Button Margin="0,10,0,0" Foreground="Blue" FontFamily="B Yekan" HorizontalAlignment="Left" Cursor="Hand" Background="White" BorderThickness="0" Click="Button_Click" >
+                <TextBlock Text="بازیابی از فایل" TextDecorations="Underline"/>
+            </Button>
+
+
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="btnSave" Click="btnSave_Click" Content="ذخیره"  Margin="10,5" Width="70" FontFamily="B Yekan" HorizontalAlignment="Right"/>
+            <Button x:Name="btnEdit" IsCancel="True" Click="btnEdit_Click" Content="تغییر طرح" Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Left"/>
+            <Button x:Name="btnDelete" Click="btnDelete_Click" Content="حذف" Margin="10,5" Width="70" FontFamily="B Yekan" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>

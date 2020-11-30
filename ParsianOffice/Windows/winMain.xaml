@@ -1,0 +1,155 @@
+﻿<Controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        x:Class="ParsianOffice.Windows.winMain"
+        xmlns:local = "clr-namespace:ParsianOffice.Classes"
+        xmlns:persiandatecontrols="clr-namespace:Arash.PersianDateControls;assembly=PersianDateControls"
+    Closing="Window_Closing"
+        mc:Ignorable="d" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Title="پارسیان" Height="752.955" Width="897.671">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed" />
+        <CommandBinding Command="local:MainCutomCommands.NewIssue" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed" />
+    </Window.CommandBindings>
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button FontFamily="B Yekan" Content="تنظیمات کاربر جاری" Name="btnUserSetting" Click="btnUserSetting_Click" />
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Name="itmChangePassword" Header="تغییر کلمه عبور" FontFamily="B Yekan" Click="itmChangePassword_Click"/>
+                            <MenuItem Name="itmLogOut" Header="خروج کاربر" FontFamily="B Yekan" Click="itmLogOut_Click"/>
+                        </ContextMenu>
+                    </StackPanel.ContextMenu>
+                    <TextBlock Margin="14,0,0,0" FontFamily="B Yekan" VerticalAlignment="Center" Name="txtCurrentUser"/>
+                    <TextBlock Margin="4 0 0 0" FontFamily="B Yekan" VerticalAlignment="Center" FlowDirection="RightToLeft" Text="کاربر فعال : " />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <DockPanel Name="mainPanel" FlowDirection="RightToLeft">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="329"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer FlowDirection="LeftToRight" Grid.Column="1">
+                <StackPanel FlowDirection="LeftToRight">
+                    <GroupBox Header="تعاریف" FontFamily="B Yekan">
+                        <WrapPanel>
+                            <Controls:Tile Name="itmIssue" Title="تعاریف" Content="نسخه ها برنامه" Click="itmDefineIssuse_Click" MouseEnter="itmIssue_MouseEnter"/>
+                            <Controls:Tile Name="itmVisitor" Title="تعاریف" Content="بازاریاب" Click="itmDefineVisitor_Click"/>
+                            <Controls:Tile Name="itmExport" Title="تعاریف" Content="کارشناس" Click="itmDefineExpert_Click"/>
+                            <Controls:Tile Name="itmCustomer" Title="تعاریف" Content="مشتری" Click="itmDefineCustomer_Click"/>
+                        </WrapPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="ثبت ها" FontFamily="B Yekan">
+                        <WrapPanel>
+                            <Controls:Tile Name="itmApointment" Title="ثبت ها" Content="قرار های کارشناس" Click="itmAppolintment_Click"/>
+                            <Controls:Tile Name="itmReminder" Title="ثبت ها" Content="ثبت یادآور" Click="itmFollowUp_Click"/>
+                            <Controls:Tile Name="itmSaleBill" Title="ثبت ها" Content="فاکتور فروش" Click="itmOrder_Click"/>
+                            <Controls:Tile Name="itmReturnBill" Title="ثبت ها" Content="فاکتور مرجوعی" Click="itmOrderReturn_Click"/>
+                            <Controls:Tile Name="itmRest" Title="ثبت ها" Content="ثبت مرخصی" Click="itmRest_Click"/>
+                            <Controls:Tile Name="itmContract" Title="ثبت ها" Content="ثبت قرارداد" Click="itmContract_Click"/>
+                        </WrapPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="گزارشات" FontFamily="B Yekan">
+                        <WrapPanel>
+                            <Controls:Tile Name="itmAppointmentReport" Title="گزارشات" Content="قرار های کارشناس" Click="itmAppointmentReport_Click"/>
+                            <Controls:Tile Name="itmToDayAppointmentReport" Title="گزارشات" Content="قرار های روز" Click="itmToDayAppointmentReport_Click"/>
+                            <Controls:Tile Name="itmNextDayAppointmentReport" Title="گزارشات" Content="قرار های روز آینده" Click="itmNextDayAppointmentReport_Click"/>
+                            <Controls:Tile Name="itmCustomerFollowUpReport" Title="گزارشات" Content="لیست یادآور ها" Click="itmCustomerFollowUpReport_Click"/>
+                            <Controls:Tile Name="itmTodayFollowUpReport" Title="گزارشات" Content="یادآور های امروز" Click="itmTodayFollowUpReport_Click"/>
+                            <Controls:Tile Name="itmVacation" Title="گزارشات" Content="لیست مرخصی" Click="itmVacation_Click"/>
+                            <Controls:Tile Name="itmVisitorReport" Title="گزارشات" Content="لیست فاکتور ها" Click="itmOrdersReport_Click"/>
+                            <Controls:Tile Name="itmOrderReport" Title="گزارشات" Content="لیست قرارداد ها" Click="itmVisitorReport_Click"/>
+                        </WrapPanel>
+                    </GroupBox>
+                    <GroupBox Header="تنظیمات" FontFamily="B Yekan">
+                        <WrapPanel>
+                            <Controls:Tile Name="itmPrintSetting" Title="تنظیمات" Content="تنظیمات چاپ" Click="itmPrintSetting_Click"/>
+                            <Controls:Tile Name="itmBackup" Title="تنظیمات" Content="پشتیبان گیری" Click="itmBackup_Click"/>
+                            <Controls:Tile Name="itmRestore" Title="تنظیمات" Content="بازیابی اطلاعات" Click="itmRestore_Click"/>
+                            <Controls:Tile Name="itmUsers" Title="تنظیمات" Content="مدیریت کاربران" Click="itmUsers_Click"/>
+                            <Controls:Tile Name="itmManagerSetting" Title="تنظیمات" Content="تنظیمات مدیریتی" Click="itmManagerSetting_Click"/>
+                        </WrapPanel>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+            <Image Source="/ParsianOffice;component/Pics/main.jpg" Stretch="Fill" Panel.ZIndex="-1" Grid.ColumnSpan="2"/>
+            <Controls:Flyout Header="تنظیمات کاربر" FontFamily="B Yekan" Name="flySetting" IsOpen="False" Panel.ZIndex="100" Width="352" Grid.ColumnSpan="2" ClosingFinished="flySetting_ClosingFinished" IsOpenChanged="flySetting_IsOpenChanged" >
+                <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <GroupBox Header="عمومی" FontFamily="B Yekan">
+                            <StackPanel>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbSaveSize" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="ذخیره اندازه و موقیت پنجره ها" IsCheckedChanged="tsbSaveSize_IsCheckedChanged"/>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbSaveGriLayout" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="ذخیره خودکار طرح جدول"/>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbGridPaging" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="صفحه بندی جداول"/>
+                                <Grid Name="grdPaging" IsEnabled="{Binding ElementName=tsbGridPaging, Path=IsChecked}">
+                                    <TextBox Name="txtPagingQty" Margin="200,0,0,0"/>
+                                    <TextBlock Text="تعداد ردیف در هر صفحه" Margin="0,0,133,0"/>
+                                </Grid>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbLoadVisitor" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="بارگزاری بازاریاب در تعریف مشتری"/>
+                                <Grid>
+                                    <TextBox Name="txtTimeInterval" Margin="200,0,0,0"/>
+                                    <TextBlock Text="فاصله ساعتی" Margin="0,0,133,0"/>
+                                </Grid>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="گزارشات ورود" FontFamily="B Yekan">
+                            <StackPanel>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbShowApointmentInStart" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="نمایش قرار های روز هنگام ورود"/>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbShowFollowInStart" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="نمایش پیگیری های روز هنگام ورود"/>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbShowRestInStart" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="نمایش مرخصی های روز هنگام ورود"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="گزارشات خروج" FontFamily="B Yekan">
+                            <StackPanel>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbShowNextApointmentInExit" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="نمایش قرار های روز آینده هنگام خروج"/>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbShowNextFollowInExit" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="نمایش پیگیری های روز آینده هنگام خروج"/>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbShowNextRestInExit" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="نمایش مرخصی های روز آیده هنگام خروج"/>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="قرارداد" FontFamily="B Yekan">
+                            <StackPanel>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbAutoDefault" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="پیشفرض شرایط پرداخت اتوماتیک"/>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbSetContractInOrderInsert" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="ثبت قرارداد هنگام صدور فاکتور"/>
+                                <GroupBox Header="شرایط پرداخت به صورت نقدی">
+                                    <StackPanel>
+                                        <TextBlock Text="[مبلغ فاکتور][مبلغ تخفیف][مبلغ کل][مبلغ به حروف]"/>
+                                        <TextBox Name="txtCashPaymentText" Width="318" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="متن شرایط پرداخت به صورت ترکیبی">
+                                    <StackPanel>
+                                        <TextBlock Text="[تعداد چک][مبلغ فاکتور][مبلغ تخفیف][مبلغ کل][نقدی][مبلغ به حروف]"/>
+                                        <TextBox Name="txtMixPaymentText" Width="318" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="قرار ملاقات" FontFamily="B Yekan">
+                            <StackPanel>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbRestWarninigInApointmentInsert" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="اخطار مرخصی در ثبت قرارملاقات"/>
+                                <Controls:ToggleSwitch FontFamily="B Yekan" FlowDirection="RightToLeft" Name="tsbShowAppointmentsInInsert" OnSwitchBrush="GreenYellow" OffSwitchBrush="Red"  Content="نمایش قرار های روز هنگام ثبت قرار ملاقات"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </Controls:Flyout>
+            <persiandatecontrols:PersianCalendar MouseDoubleClick="perDate_MouseDoubleClick" Name="perDate" Background="AliceBlue" Opacity="0.5" VerticalAlignment="Bottom" Height="300" FontFamily="B Traffic" Panel.ZIndex="99" MouseEnter="PersianCalendar_MouseEnter" MouseLeave="perDate_MouseLeave" FontSize="16"/>
+
+        </Grid>
+    </DockPanel>
+</Controls:MetroWindow>

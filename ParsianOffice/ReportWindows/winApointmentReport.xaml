@@ -1,0 +1,98 @@
+﻿<Window xmlns:PersianDateControls="clr-namespace:Arash.PersianDateControls;assembly=PersianDateControls" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:local="clr-namespace:ParsianOffice.Windows" 
+        Loaded="Window_Loaded" Closing="Window_Closing"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:dxprg="http://schemas.devexpress.com/winfx/2008/xaml/propertygrid"
+        x:Class="ParsianOffice.Windows.winApointmentReport"
+        mc:Ignorable="d"
+        Title="گزارش قرارها" Height="587.92" Width="710.275">
+    <Grid FlowDirection="RightToLeft" Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="136"/>
+            <ColumnDefinition Width="4"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2"/>
+
+        <ScrollViewer FlowDirection="LeftToRight" Grid.RowSpan="2">
+            <Grid FlowDirection="LeftToRight" Name="propertyGrid">
+                <dxprg:PropertyGridControl  Name="viewProperty" SelectedObject="{Binding ElementName=viw}"/>
+            </Grid>
+        </ScrollViewer>
+
+        <Menu Grid.Column="2">
+            <MenuItem Name="itmSetting" Header="تنظیمات جدول" FontFamily="B Yekan" Click="itmSetting_Click"/>
+        </Menu>
+
+        <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" x:Name="grd" dxg:DataControlSerializationOptions.RemoveOldColumns="False" dx:DXSerializer.StoreLayoutMode="All"
+                         dxg:DataControlSerializationOptions.AddNewColumns="False"
+                         Grid.Column="2" MouseDoubleClick="grd_MouseDoubleClick" Grid.Row="1">
+            <dxg:GridControl.ContextMenu>
+                <ContextMenu FontFamily="B Yekan">
+                    <MenuItem Header="مشاهده قرار" Name="itmShowApointment" Click="itmShowApointment_Click"/>
+                    <MenuItem Header="تغییر قرار" Name="itmEditApointment" Click="itmEditApointment_Click"/>
+                    <MenuItem Header="حذف قرار" Name="itmDeleteApointment" Click="itmDeleteApointment_Click"/>
+                    <Separator/>
+                    <MenuItem Header="تغییر وضعیت">
+                        <MenuItem Header="برقرار" Name="itmBargharar" Click="itmBargharar_Click"/>
+                        <MenuItem Header="لغو" Name="itmCancel" Click="itmCancel_Click"/>
+                        <MenuItem Header="تعلیق" Name="itmTaligh" Click="itmTaligh_Click"/>
+                        <MenuItem Header="انجام شد" Name="itmDone" Click="itmDone_Click"/>
+                    </MenuItem>
+
+                    <MenuItem Header="تغییر نوع قرار">
+                        <MenuItem Header="پرزنت" Name="itmPresent" Click="itmPresent_Click"/>
+                        <MenuItem Header="نصب" Name="itmNasb" Click="itmNasb_Click"/>
+                        <MenuItem Header="آموزش" Name="itmAmozesh" Click="itmAmozesh_Click"/>
+                        <MenuItem Header="نصب و آموزش" Name="itmNasbVaAmozesh" Click="itmNasbVaAmozesh_Click"/>
+                        <MenuItem Header="خدمات" Name="itmKhadamat" Click="itmKhadamat_Click"/>
+                    </MenuItem>
+                </ContextMenu>
+            </dxg:GridControl.ContextMenu>
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="viw" AllowEditing="False" ShowCriteriaInAutoFilterRow="True" ShowTotalSummary="True" ShowGroupPanel="False" ShowAutoFilterRow="True" ColumnChooserColumnDisplayMode="ShowHiddenColumnsOnly" ShowGroupFooters="True" AutoWidth="True" FontFamily="B Yekan"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="ep_Name" Header="کارشناس" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="ap_Date" Header="تاریخ میلادی" AutoFilterCriteria="Equals" FilterPopupMode="Date"/>
+            <dxg:GridColumn FieldName="ap_Area" Header="منطقه" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_ID" Header="کد مشتری" AutoFilterCriteria="Equals"/>
+            <dxg:GridColumn FieldName="cu_Name" Header="نام مشتری" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="customName" Header="نام" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_NationalCode" Header="کد ملی" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_Email" Header="ایمیل" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_Address" Header="آدرس" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="vt_Name" Header="بازاریاب" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="st_Name" Header="وضعیت" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="kind_Name" Header="نوع" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="username" Header="کاربر ثبت" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="ID" Header="کد قرار" AutoFilterCriteria="Equals"/>
+            <dxg:GridColumn FieldName="Date" Header="تاریخ" AutoFilterCriteria="Contains" FilterPopupMode="Custom">
+                <dxg:GridColumn.CustomColumnFilterPopupTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="250" Height="250">
+                            <PersianDateControls:PersianCalendar FontFamily="B Yekan" MouseDoubleClick="PersianCalendar_MouseDoubleClick" />
+                            <Button Name="btnClearFilter" Content="حذف فیلتر" Width="100" Foreground="Wheat" Click="btnClearFilter_Click" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </dxg:GridColumn.CustomColumnFilterPopupTemplate>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="Time" Header="ساعت" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_Tell" Header="شماره تلفن" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_PhoneNumber" Header="شماره موبایل" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_Phone" Header="شماره ضروری" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="vt_ID" Header="کد بازاریاب" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_PostalCod" Header="کد پستی" AutoFilterCriteria="Contains"/>
+        </dxg:GridControl>
+
+
+    </Grid>
+</Window>

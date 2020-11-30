@@ -1,0 +1,38 @@
+﻿<Window x:Class="ParsianOffice.Windows.winDefineIssuse"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local1="clr-namespace:ParsianOffice.Windows"
+        mc:Ignorable="d" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="Manual" Closed="Window_Closed"
+        xmlns:cmd = "clr-namespace:ParsianOffice.Classes"
+        Title="معرفی نسخه های برنامه" Height="245.787" Width="518.794">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:ApointmentCostomCommand.Delete" CanExecute="DeleteCommand_CanExecute" Executed="DeleteCommand_Executed" />
+        <CommandBinding Command="cmd:ApointmentCostomCommand.Insert" CanExecute="InsertCommand_CanExecute" Executed="InsertCommand_Executed" />
+        <CommandBinding Command="cmd:ApointmentCostomCommand.Search" CanExecute="SearchCommand_CanExecute" Executed="SearchCommand_Executed" />
+    </Window.CommandBindings>
+
+    <Grid FlowDirection="RightToLeft">
+
+        <TextBlock Text="کد کالا" VerticalAlignment="Top" Margin="20,15,0,0" FontFamily="B Traffic" HorizontalAlignment="Left" Width="35"/>
+        <TextBox Name="txtID" VerticalAlignment="Top" Margin="60,15,0,0" FontFamily="B Traffic" HorizontalAlignment="Left" Width="50" IsReadOnly="True" KeyDown="txtID_KeyDown" Height="20"/>
+
+        <Button Name="btnSearch" Click="btnSearch_Click" VerticalAlignment="Top" Margin="115,10,0,0" FontFamily="B Traffic" HorizontalAlignment="Left" IsTabStop="False">
+            <Image Stretch="Fill" Source="/ParsianOffice;component/Pics/search.ico" Width="16" Height="16"/>
+        </Button>
+
+        <TextBlock VerticalAlignment="Top" Text="نام کالا" Margin="20,45,0,0" FontFamily="B Traffic" HorizontalAlignment="Left" Width="35"/>
+        <TextBox Name="txtName" VerticalAlignment="Top"  Margin="60,45,58,0" FontFamily="B Traffic"/>
+
+        <TextBlock VerticalAlignment="Top" Text="قیمت کالا" Margin="10,75,0,0" FontFamily="B Traffic" HorizontalAlignment="Left" Width="45"/>
+        <TextBox  Name="txtPrice" VerticalAlignment="Top"  Margin="60,75,58,0" FontFamily="B Traffic" FlowDirection="LeftToRight" TextChanged="txtPrice_TextChanged" KeyDown="txtPrice_KeyDown"/>
+        <TextBlock VerticalAlignment="Top" Margin="60,106,58,0" FontFamily="B Traffic" Name="lblCharachter" TextWrapping="Wrap"/>
+
+        <Button Name="btnSave" Click="btnSave_Click" Content="ذخیره" Width="60" Height="29"  FontFamily="B Yekan"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" IsDefault="True"/>
+        <Button Name="btnDelete" Click="btnDelete_Click" Content="حذف" Width="60" Height="29"  FontFamily="B Yekan"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,0,201,20"/>
+        <Button Name="btnExit" Click="btnExit_Click" Content="خروج" Width="60" Height="29"  FontFamily="B Yekan"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180,0,20,20" IsCancel="True"/>
+
+    </Grid>
+</Window>

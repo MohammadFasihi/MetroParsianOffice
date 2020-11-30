@@ -1,0 +1,43 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParsianOffice"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" x:Class="ParsianOffice.winAlert"
+        mc:Ignorable="d" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="Window_Closing"
+        Title="قرار ملاقات های کارشناس" Height="471.642" Width="713.674">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="56"/>
+        </Grid.RowDefinitions>
+        <!--<telerik:RadGridView IsTabStop="False" x:Name="grdMain"  DataLoadMode="Asynchronous" CanUserDeleteRows="False" CanUserInsertRows="False" IsReadOnly="True" ShowGroupPanel="False"/>-->
+
+        <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Name="grdMain" FontFamily="B Yekan">
+            <dxg:GridControl.View>
+                <dxg:TableView Name="viwMain" AllowEditing="False" ShowTotalSummary="True" ShowAutoFilterRow="True" ShowGroupPanel="False" AutoWidth="True" ShowCriteriaInAutoFilterRow="True" ColumnChooserColumnDisplayMode="ShowHiddenColumnsOnly"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="ep_Name" Header="نام کارشناس" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="ap_Date" Header="تاریخ ثبت میلادی" AutoFilterCriteria="Equals" FilterPopupMode="Date" Visible="False"/>
+            <dxg:GridColumn FieldName="ap_Area" Header="منطقه" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_ID" Header="کد مشتری" AutoFilterCriteria="Equals" Visible="False"/>
+            <dxg:GridColumn FieldName="cu_Name" Header="نام مشتری" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_NationalCode" Header="کد ملی" Visible="False"/>
+            <dxg:GridColumn FieldName="cu_Email" Header="ایمیل" Visible="False" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="cu_Address" Header="آدرس" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="vt_Name" Header="بازاریاب" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="st_Name" Header="وضعیت" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="kind_Name" Header="نوع قرار" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="username" Header="کاربر ثبت" Visible="False" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="ID" Header="سریال" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="Date" Header="تاریخ شمسی" AutoFilterCriteria="Contains"/>
+            <dxg:GridColumn FieldName="Time" Header="ساعت" AutoFilterCriteria="Contains"/>
+        </dxg:GridControl>
+
+        <Button Grid.Row="1" IsDefault="True" x:Name="btnContinue" Click="btnContinue_Click" Content="ادامه"  FontFamily="B Yekan" FontSize="15" HorizontalAlignment="Left" Width="80" Margin="5,7,0,7" />
+        <Button Grid.Row="1" IsCancel="True" x:Name="btnCancel" Click="btnCancel_Click" Content="انصراف"  FontFamily="B Yekan" FontSize="15" HorizontalAlignment="Left" Width="80" Margin="100,7,0,7" />
+
+    </Grid>
+</Window>

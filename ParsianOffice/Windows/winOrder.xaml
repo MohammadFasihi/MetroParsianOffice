@@ -1,0 +1,123 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local1="clr-namespace:ParsianOffice.Windows"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:persiandatecontrols="clr-namespace:Arash.PersianDateControls;assembly=PersianDateControls"
+        xmlns:local = "clr-namespace:ParsianOffice.Classes"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+        x:Class="ParsianOffice.Windows.winOrder"
+        mc:Ignorable="d" Loaded="Window_Loaded" Closing="Window_Closing"
+        Title="ثبت سفارش" Height="592.151" Width="726.942">
+
+    <Window.Resources>
+        <dx:UnboundDataSource x:Key="UnboundDataSource" Count="0"/>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="local:ApointmentCostomCommand.Delete" CanExecute="DeleteCommand_CanExecute" Executed="DeleteCommand_Executed" />
+        <CommandBinding Command="local:ApointmentCostomCommand.Refresh" CanExecute="RefreshCommand_CanExecute" Executed="RefreshCommand_Executed" />
+        <CommandBinding Command="local:ApointmentCostomCommand.Insert" CanExecute="InsertCommand_CanExecute" Executed="InsertCommand_Executed" />
+        <CommandBinding Command="local:ApointmentCostomCommand.Search" CanExecute="SearchCommand_CanExecute" Executed="SearchCommand_Executed" />
+    </Window.CommandBindings>
+
+    <Grid FlowDirection="RightToLeft" x:Name="grd">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="39"/>
+            <RowDefinition/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="115"/>
+            <RowDefinition Height="39"/>
+        </Grid.RowDefinitions>
+
+        <GridSplitter Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <GridSplitter Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,2"/>
+
+        <WrapPanel Grid.Row="0" >
+            <TextBlock Text="شماره فاکتور" FontFamily="B Traffic" FontSize="12" VerticalAlignment="Top" Height="20" Margin="10"/>
+            <TextBox x:Name="txtID" FontFamily="B Traffic" FontSize="11" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Width="39" Height="20" KeyDown="txtID_KeyDown" IsReadOnly="True"/>
+            <Button x:Name="btnSearch"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="20" Height="20" Click="btnSearch_Click" Margin="10">
+                <Image Stretch="Fill" Source="/ParsianOffice;component/Pics/search.ico" />
+            </Button>
+
+            <TextBlock Text="نام مشتری" FontFamily="B Yekan" Margin="10" VerticalAlignment="Top"/>
+            <dxg:LookUpEdit x:Name="cmbCustomer" Margin="0,10" Width="130" ImmediatePopup="True" FilterCondition="Contains" VerticalAlignment="Top" FontFamily="B Yekan"/>
+
+            <TextBlock Text="تاریخ" FontFamily="B Yekan" Margin="10" VerticalAlignment="Top"/>
+            <persiandatecontrols:PersianDatePicker x:Name="pDate" FontFamily="B Yekan" VerticalAlignment="Top" Margin="0,5"/>
+
+            <TextBlock Text="وضعیت" FontFamily="B Yekan" Margin="10" VerticalAlignment="Top"/>
+            <ComboBox x:Name="cmbSituation" VerticalAlignment="Top" Margin="10" FontFamily="B Yekan" Width="130" IsEditable="True"/>
+
+        </WrapPanel>
+
+        <TextBlock Text="توضیحات" Margin="10,5,10,5" FontFamily="B Yekan" Grid.Row="2" />
+        <TextBox x:Name="txtComment" VerticalAlignment="Top"  Margin="60,5,10,0" FontFamily="B Yekan" Grid.Row="2" Height="26" />
+
+        <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" Grid.Row="3" FontFamily="B Yekan" x:Name="mainGrid" ItemsSource="{Binding Data, Source={StaticResource UnboundDataSource}}">
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="viwMain" InitNewRow="viwGrid_InitNewRow" ShowTotalSummary="True" AutoWidth="True" ShowGroupPanel="False" AllowEditing="True" NewItemRowPosition="Bottom" ColumnChooserColumnDisplayMode="ShowHiddenColumnsOnly" CellValueChanged="viwMain_CellValueChanged"/>
+            </dxg:GridControl.View>
+            <dxg:GridColumn FieldName="recID" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="ردیف" AllowEditing="False"/>
+            <dxg:GridColumn FieldName="issue_ID" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="کد کالا" AllowEditing="True"/>
+            <dxg:GridColumn FieldName="issue_Name" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="نام کالا" AllowEditing="True">
+                <dxg:GridColumn.EditSettings>
+                    <dxg:LookUpEditSettings x:Name="cmbIssueName" FilterCondition="Contains" ImmediatePopup="True"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+            <dxg:GridColumn FieldName="Qty" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="تعداد" AllowEditing="True"/>
+            <dxg:GridColumn FieldName="Comment" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="توضیحات" AllowEditing="True"/>
+
+            <dxg:GridColumn FieldName="IsDone" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="وضعیت انجام" AllowEditing="True">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:CheckEditSettings Name="chkIsDone"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+
+
+            <dxg:GridColumn FieldName="UsersQty" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="تعداد کاربر" AllowEditing="True"/>
+            <dxg:GridColumn FieldName="Discount" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="تخفیف مبلغی" AllowEditing="True"/>
+            <dxg:GridColumn FieldName="Discount_Per" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="تخفیف درصدی" AllowEditing="True"/>
+            <dxg:GridColumn FieldName="Price" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="مبلغ جزء" AllowEditing="True" />
+            <dxg:GridColumn FieldName="RecPrice" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="مبلغ کل" AllowEditing="False"/>
+            <dxg:GridColumn FieldName="detail_Price" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="قیمت" AllowEditing="True" />
+            <dxg:GridColumn FieldName="detail_RecPrice" HorizontalHeaderContentAlignment="Center" AllowAutoFilter="False" AllowColumnFiltering="False" Header="قیمت کل" AllowEditing="False"/>
+        </dxg:GridControl>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="311*"/>
+                <ColumnDefinition Width="261*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="اطلاعات سفارش" FontFamily="B Yekan" Grid.Column="1">
+                <StackPanel>
+                    <Grid>
+                        <TextBlock Text="مبلغ سفارش" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtBasePrice" IsReadOnly="True" VerticalAlignment="Top" Margin="60,0,0,0" FlowDirection="LeftToRight"/>
+                    </Grid>
+                    <Grid>
+                        <TextBlock Text="جمع تخفیف" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtDiscountSum" IsReadOnly="True" VerticalAlignment="Top" Margin="60,0,0,0" FlowDirection="LeftToRight"/>
+                    </Grid>
+                    <Grid>
+                        <TextBlock Text="مبلغ کل" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtPrice" IsReadOnly="True" VerticalAlignment="Top" Margin="60,0,0,0" FlowDirection="LeftToRight"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            <TextBlock Text="تخفیف" FontFamily="B Yekan" VerticalAlignment="Top" Margin="10,15"/>
+            <TextBox x:Name="txtDiscount" FontFamily="B Yekan" VerticalAlignment="Top" Margin="50,15,10,0" FlowDirection="LeftToRight" KeyDown="txtDiscount_KeyDown"/>
+
+            <TextBlock x:Name="lblOrderPrice"  FontFamily="B Yekan" VerticalAlignment="Top" Margin="10,50"/>
+        </Grid>
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <Button x:Name="btnSave" Click="btnSave_Click" Content="ذخیره" Margin="10,5" Width="70" FontFamily="B Yekan" HorizontalAlignment="Right"/>
+            <Button x:Name="btnDelete" Click="btnDelete_Click" Content="حذف" Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Center"/>
+            <Button x:Name="btnCancel" Click="btnCancel_Click" Content="انصراف" Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</Window>

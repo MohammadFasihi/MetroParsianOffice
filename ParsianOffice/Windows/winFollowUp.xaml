@@ -1,0 +1,46 @@
+﻿<Window x:Class="ParsianOffice.Windows.winFollowUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local1="clr-namespace:ParsianOffice.Windows"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" Closed="Window_Closed"
+        xmlns:local = "clr-namespace:ParsianOffice.Classes"
+        xmlns:PersianDateControls="clr-namespace:Arash.PersianDateControls;assembly=PersianDateControls" Loaded="Window_Loaded"
+        mc:Ignorable="d"
+        Title="ثبت پیگیری" Height="368.895" Width="425.58">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="local:ApointmentCostomCommand.Delete" CanExecute="DeleteCommand_CanExecute" Executed="DeleteCommand_Executed" />
+        <CommandBinding Command="local:ApointmentCostomCommand.Refresh" CanExecute="RefreshCommand_CanExecute" Executed="RefreshCommand_Executed" />
+        <CommandBinding Command="local:ApointmentCostomCommand.Insert" CanExecute="InsertCommand_CanExecute" Executed="InsertCommand_Executed" />
+        <CommandBinding Command="local:ApointmentCostomCommand.Search" CanExecute="SearchCommand_CanExecute" Executed="SearchCommand_Executed" />
+    </Window.CommandBindings>
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="39"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="کد پیگیری" FontFamily="B Traffic" FontSize="12" VerticalAlignment="Top" Margin="5,35,20,0" Height="20"/>
+        <TextBox x:Name="txtID" FontFamily="B Traffic" FontSize="11" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="60,35,0,0" Width="30" Height="26"/>
+        <Button x:Name="btnSearch" Margin="95,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="20" Height="25" Click="btnSearch_Click">
+            <Image Stretch="Fill" Source="/ParsianOffice;component/Pics/search.ico" />
+        </Button>
+
+        <TextBlock Text="مشتری" VerticalAlignment="Top" Margin="20,60,20,0" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <dxg:LookUpEdit Name="cmbCustomer" ImmediatePopup="True" FilterCondition="Contains" VerticalAlignment="Top" Margin="60,60,20,0" FontFamily="B Traffic" FontSize="12" Height="22"  />
+
+        <TextBlock Text="تاریخ" Margin="20,90,0,0" VerticalAlignment="Top" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <PersianDateControls:PersianDatePicker x:Name="dpDate"  FontFamily="B Traffic" FontSize="12" Margin="60,90,20,0" VerticalAlignment="Top" FlowDirection="LeftToRight" Width="Auto"/>
+
+        <TextBlock Text="متن پیگیری" VerticalAlignment="Top" Margin="5,120,20,0" FontFamily="B Traffic" FontSize="12" Height="20"/>
+        <TextBox Name="txtText" TextWrapping="Wrap" AcceptsReturn="True" Margin="60,120,20,10" FontFamily="B Traffic" FontSize="12"   />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="btnSave" Click="btnSave_Click" Content="ذخیره"  Margin="10,5" Width="70" FontFamily="B Yekan" HorizontalAlignment="Right"/>
+            <Button x:Name="btnDelete" Click="btnDelete_Click" Content="حذف" Margin="10,5" Width="70"  FontFamily="B Yekan" HorizontalAlignment="Center"/>
+            <Button x:Name="btnCancel" IsCancel="True" Click="btnCancel_Click" Content="خروج" Margin="10,5" Width="70" FontFamily="B Yekan" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,334 @@
+Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraPrinting.Localization
+Imports DevExpress.XtraGrid.Localization
+
+Public Class FarsiPrintLocalizer
+    Inherits PreviewLocalizer
+    Public Overrides Function GetLocalizedString(id As PreviewStringId) As String
+        Dim ret As String = ""
+        Select Case id
+            Case PreviewStringId.MenuItem_File : Return "پرونده"
+            Case PreviewStringId.MenuItem_View : Return "مشاهده"
+            Case PreviewStringId.MenuItem_Background : Return "زمینه"
+            Case PreviewStringId.MenuItem_PageSetup : Return "تنظیمات صفحه"
+            Case PreviewStringId.MenuItem_Print : Return "چاپ..."
+            Case PreviewStringId.MenuItem_PrintDirect : Return "چاپ"
+            Case PreviewStringId.TB_TTip_Export : Return "خروجی به"
+            Case PreviewStringId.TB_TTip_Send : Return "ارسال به ایمیل"
+            Case PreviewStringId.MenuItem_PdfDocument : Return "AcrobatReader (PDF)"
+            Case PreviewStringId.MenuItem_HtmDocument : Return "وب (HTML)"
+            Case PreviewStringId.MenuItem_MhtDocument : Return "وب (Mht)"
+            Case PreviewStringId.MenuItem_RtfDocument : Return "متن (Rtf)"
+            Case PreviewStringId.PreviewForm_Caption : Return "حسابداری پارسیان - پیش نمایش چاپ"
+            Case PreviewStringId.MenuItem_XlsDocument : Return "اکسل (Xls)"
+            Case PreviewStringId.MenuItem_XlsxDocument : Return "اکسل 2010-2013 (Xlsx)"
+            Case PreviewStringId.MenuItem_CsvDocument : Return "اکسل (Csv)"
+            Case PreviewStringId.MenuItem_TxtDocument : Return "متن (Txt)"
+            Case PreviewStringId.MenuItem_GraphicDocument : Return "عکس (Jpg)"
+            Case PreviewStringId.MenuItem_Exit : Return "خروج"
+            Case PreviewStringId.ScrollingInfo_Page : Return "صفحه"
+            Case PreviewStringId.MenuItem_PageLayout : Return "طرح بندی صفحه"
+            Case PreviewStringId.MenuItem_ViewContinuous : Return "پیوسته"
+            Case PreviewStringId.MenuItem_ViewFacing : Return "نما"
+            Case PreviewStringId.TB_TTip_Customize : Return "شخصی سازی"
+            Case PreviewStringId.MenuItem_BackgrColor : Return "رنگ"
+            Case PreviewStringId.MenuItem_Watermark : Return "متن سایه روشن "
+            Case PreviewStringId.BarText_StatusBar : Return "نوار وضعیت"
+            Case PreviewStringId.BarText_Toolbar : Return "نوار ابزار"
+            Case PreviewStringId.TB_TTip_Search : Return "جستجو"
+            Case PreviewStringId.RibbonPreview_Open_Caption : Return "بازکردن"
+            Case PreviewStringId.TB_TTip_Open : Return "بازکردن پرونده های ذخیره شده"
+            Case PreviewStringId.RibbonPreview_Save_Caption : Return "ذخیره"
+            Case PreviewStringId.TB_TTip_Save : Return "ذخیره پرونده"
+            Case PreviewStringId.TB_TTip_Print : Return "با انتخاب چاپگر"
+            Case PreviewStringId.TB_TTip_PrintDirect : Return "مستقیم"
+            Case PreviewStringId.TB_TTip_PageSetup : Return ""
+            Case PreviewStringId.TB_TTip_EditPageHF : Return ""
+            Case PreviewStringId.TB_TTip_Scale : Return "تعیین مقیاس صفحه"
+            Case PreviewStringId.TB_TTip_HandTool : Return "ابزار حرکت صفحه"
+            Case PreviewStringId.TB_TTip_Magnifier : Return "ذره بین"
+            Case PreviewStringId.TB_TTip_ZoomOut : Return "کوچکتر"
+            Case PreviewStringId.TB_TTip_Zoom : Return "بزرگنمایی"
+            Case PreviewStringId.TB_TTip_ZoomIn : Return "بزرگتر"
+            Case PreviewStringId.TB_TTip_FirstPage : Return "صفحه اول"
+            Case PreviewStringId.TB_TTip_PreviousPage : Return "صفحه قبل"
+            Case PreviewStringId.TB_TTip_NextPage : Return "صفحه بعد"
+            Case PreviewStringId.TB_TTip_LastPage : Return "آخرین صفحه"
+            Case PreviewStringId.TB_TTip_MultiplePages : Return "چندصفحه ای"
+            Case PreviewStringId.Button_Cancel : Return "انصراف"
+            Case PreviewStringId.MPForm_Lbl_Pages : Return "صفحات"
+            Case PreviewStringId.TB_TTip_Backgr : Return "رنگ پس زمینه"
+            Case PreviewStringId.TB_TTip_Watermark : Return "ایجاد عکس یا متن سایه روشن در پس زمینه"
+            Case Else : Return MyBase.GetLocalizedString(id)
+
+                Exit Select
+        End Select
+        Return ret
+    End Function
+End Class
+Public Class FarsiGridLocalizer
+    Inherits GridLocalizer
+
+    Public Overrides ReadOnly Property Language() As String
+        Get
+            Return "Fa"
+        End Get
+    End Property
+    Public Overrides Function GetLocalizedString(id As GridStringId) As String
+        Dim ret As String = ""
+        Select Case id
+            ' ...  
+            Case GridStringId.GridGroupPanelText
+                Return "یک ستون را به اینجا بکشید"
+            Case GridStringId.MenuColumnClearSorting
+                Return "حذف مرتب سازی"
+            Case GridStringId.MenuGroupPanelHide
+                Return "بستن پنجره گروه بندی"
+            Case GridStringId.MenuColumnRemoveColumn
+                Return "حذف ستون"
+            Case GridStringId.MenuColumnFilterEditor
+                Return "فیلتر ستون"
+            Case GridStringId.MenuColumnFindFilterShow
+                Return "نمایش پنجره جستجو"
+            Case GridStringId.MenuColumnAutoFilterRowShow
+                Return "نمایش فیلتر آزاد"
+            Case GridStringId.MenuColumnSortAscending
+                Return "مرتب سازی از کم به زیاد"
+            Case GridStringId.MenuColumnSortDescending
+                Return "مرتب سازی از زیاد به کم"
+            Case GridStringId.MenuColumnGroup
+                Return "گروه بندی بر اساس این ستون"
+            Case GridStringId.MenuColumnUnGroup
+                Return "حذف گروه بندی"
+            Case GridStringId.MenuColumnColumnCustomization
+                Return "افزودن ستون"
+            Case GridStringId.MenuColumnBestFit
+                Return "بهترین اندازه ستون"
+            Case GridStringId.MenuColumnFilter
+                Return "جستجو"
+            Case GridStringId.MenuColumnClearFilter
+                Return "حذف جستجو"
+            Case GridStringId.MenuColumnBestFitAllColumns
+                Return "بهترین اندازه همه ستونها"
+            Case GridStringId.MenuColumnClearAllSorting
+                Return "حذف مرتب سازی"
+            Case GridStringId.MenuGroupPanelShow
+                Return "گروه بندی"
+            Case GridStringId.MenuColumnFilterMode
+                Return "جستجو بر اساس"
+            Case GridStringId.MenuColumnFilterModeDisplayText
+                Return "محتوا"
+            Case GridStringId.MenuColumnFilterModeValue
+                Return "مقدار"
+            Case GridStringId.MenuColumnConditionalFormatting
+                Return "تحلیل شرطی"
+            Case GridStringId.CustomFilterDialogCancelButton
+                Return "انصراف"
+            Case GridStringId.CustomFilterDialogEmptyValue
+                Return "مقدار"
+            Case GridStringId.CustomFilterDialogOkButton
+                Return "تایید"
+            Case GridStringId.CustomFilterDialogRadioAnd
+                Return "و -هر دو شرط-"
+            Case GridStringId.CustomFilterDialogRadioOr
+                Return "یا-یکی از دو شرط -"
+            Case GridStringId.CustomFilterDialog2FieldCheck
+                Return "تست"
+            Case GridStringId.CustomFilterDialogHint
+                Return "جستجوی پیشرفته"
+            Case GridStringId.PopupFilterCustom
+                Return "پیشرفته "
+            Case GridStringId.PopupFilterAll
+                Return "همه"
+            Case GridStringId.PopupFilterBlanks
+                Return "خالی"
+            Case GridStringId.PopupFilterNonBlanks
+                Return "غیر خالی"
+            Case GridStringId.FilterBuilderApplyButton
+                Return "اعمال"
+            Case GridStringId.FilterBuilderCancelButton
+                Return "انصراف"
+            Case GridStringId.FilterBuilderCaption
+                Return "جستجوی حرفه ای"
+            Case GridStringId.FilterPanelCustomizeButton
+                Return "جستجوی حرفه ای"
+            Case GridStringId.FilterBuilderOkButton
+                Return "تایید"
+            Case GridStringId.CustomFilterDialogFormCaption
+                Return "جستجوی پیشرفته"
+            Case GridStringId.CustomFilterDialogCaption : Return "جستجوی پیشرفته"
+            Case GridStringId.CustomizationCaption : Return "ستونها"
+            Case GridStringId.MenuColumnAutoFilterRowHide : Return "بستن نوار جستجو"
+            Case GridStringId.MenuFooterSum : Return "مجموع"
+            Case GridStringId.MenuFooterMin : Return "حداقل"
+            Case GridStringId.MenuFooterMax : Return "حداکثر"
+            Case GridStringId.MenuFooterNone : Return "هیچ"
+            Case GridStringId.MenuFooterCount : Return "تعداد"
+            Case Else : Return MyBase.GetLocalizedString(id)
+                Exit Select
+        End Select
+        Return ret
+    End Function
+
+    Public Sub New()
+
+    End Sub
+End Class
+
+Public Class FarsiEditorsLocalizer
+    Inherits Localizer
+    Public Overrides ReadOnly Property Language() As String
+        Get
+            Return "Fa"
+        End Get
+    End Property
+
+    Public Overrides Function GetLocalizedString(ByVal id As StringId) As String
+        Select Case id
+            ' ... 
+            Case StringId.ColorTabWeb : Return "وب"
+            Case StringId.ColorTabSystem : Return "سیستم"
+            Case StringId.ColorTabCustom : Return " رنگ"
+            Case StringId.TextEditMenuCut : Return "بریدن"
+            Case StringId.TextEditMenuCopy : Return "کپی"
+            Case StringId.TextEditMenuPaste : Return "چسباندن"
+            Case StringId.TextEditMenuDelete : Return "پاک کردن"
+            Case StringId.PictureEditMenuLoad : Return "خواندن"
+            Case StringId.TextEditMenuUndo : Return "بازگزداندن"
+            Case StringId.TextEditMenuSelectAll : Return "انتخاب همه"
+            Case StringId.PictureEditMenuSave : Return "ذخیره"
+            Case StringId.FilterClauseContains : Return "شامل"
+            Case StringId.FilterClauseDoesNotContain : Return "نیست شامل"
+            Case StringId.FilterClauseBeginsWith : Return "شروع می شود با"
+            Case StringId.FilterClauseBetween : Return "ما بین"
+            Case StringId.FilterClauseAnyOf : Return "شامل هریک از"
+            Case StringId.FilterClauseDoesNotEqual : Return "نیست مساوی با"
+            Case StringId.FilterClauseEquals : Return "مساوی است با"
+            Case StringId.FilterClauseGreaterOrEqual : Return "بزرگتر یا مساوی"
+            Case StringId.FilterClauseGreater : Return "بزرگتر از"
+            Case StringId.FilterClauseLess : Return "کوچکتر از"
+            Case StringId.FilterClauseLess : Return "کوچکتر از"
+            Case StringId.FilterClauseLessOrEqual : Return "کوچکتر یا مساوی"
+            Case StringId.FilterClauseNotBetween : Return "نیست مابین"
+            Case StringId.FilterClauseEndsWith : Return "پایان می یابد با"
+            Case StringId.FilterClauseLike : Return "شبیه"
+            Case StringId.FilterClauseNotLike : Return "نیست شبیه "
+            Case StringId.FilterClauseNoneOf : Return "شامل هیچکدام از"
+            Case StringId.FilterMenuClearAll : Return "پاک کردن همه"
+            Case StringId.FilterClauseIsNullOrEmpty : Return "خالی است"
+            Case StringId.FilterClauseIsNotNullOrEmpty : Return "خالی نیست"
+            Case StringId.FilterMenuConditionAdd : Return "افزودن شرط"
+            Case StringId.FilterMenuGroupAdd : Return "افزودن گروه شرط"
+            Case StringId.FilterGroupAnd : Return "...و"
+            Case StringId.FilterGroupOr : Return "...یا"
+            Case StringId.FilterEmptyValue : Return "مقدار"
+            Case StringId.FilterGroupNotAnd : Return "و نیست"
+            Case StringId.FilterGroupNotOr : Return "یا نیست"
+            Case StringId.FilterEmptyEnter : Return "مقدار را وارد کنید "
+            Case StringId.FormatRuleMenuItemHighlightCellRules : Return "قوانین سلولهای برجسته"
+            Case StringId.FormatRuleMenuItemGreaterThan : Return "...بزرگتر از"
+            Case StringId.FormatRuleMenuItemLessThan : Return "...کوچکتر از"
+            Case StringId.FormatRuleMenuItemBetween : Return "...مابین"
+            Case StringId.FormatRuleMenuItemEqualTo : Return "...مساوی با"
+            Case StringId.FormatRuleMenuItemTextThatContains : Return " متنی که شامل..."
+            Case StringId.FormatRuleMenuItemCustomCondition : Return "...دستور دلخواه"
+            Case StringId.FormatRuleMenuItemTopBottomRules : Return "قوانین بالا/پایین"
+            Case StringId.FormatRuleMenuItemTop10Items : Return "10 مورد برتر"
+            Case StringId.FormatRuleMenuItemTop10Percent : Return "10 درصد برتر"
+            Case StringId.FormatRuleMenuItemBottom10Items : Return "10 مورد پایین"
+            Case StringId.FormatRuleMenuItemBottom10Percent : Return "10 درصد پایین"                ' ... 
+            Case StringId.FormatRuleMenuItemAboveAverage : Return "بیش از میانگین"
+            Case StringId.FormatRuleMenuItemBelowAverage : Return "کمتر از میانگین"
+            Case StringId.FormatRuleMenuItemUniqueDuplicateRules : Return "قوانین منحصربه فرد/تکراری"
+            Case StringId.FormatRuleMenuItemDuplicate : Return "تکراری ها"
+            Case StringId.FormatRuleMenuItemUnique : Return "منحصر به فرد"
+            Case StringId.FormatRuleMenuItemDataBars : Return "نوار داده"
+            Case StringId.FormatRuleMenuItemGradientFill : Return "نوار رنگ ترکیبی"
+            Case StringId.DataBarBlueGradient : Return "نوار ترکیبی آبی"
+            Case StringId.DataBarLightBlueGradient : Return "نوار ترکیبی آبی روشن"
+            Case StringId.DataBarYellowGradient : Return "نوار ترکیبی آبی روشن"
+            Case StringId.DataBarOrangeGradient : Return "نوار ترکیبی نارنجی"
+            Case StringId.DataBarMintGradient : Return "نوار ترکیبی نعنایی"
+            Case StringId.DataBarVioletGradient : Return "نوار ترکیبی بنفش"
+            Case StringId.DataBarRaspberryGradient : Return "نوار ترکیبی تمشکی"
+            Case StringId.DataBarCoralGradient : Return "نوار ترکیبی مرجانی"
+            Case StringId.FormatRuleMenuItemSolidFill : Return "نوار تک رنگ"
+            Case StringId.DataBarGreenGradient : Return "نوار ترکیبی سبز  "
+            Case StringId.DataBarBlue : Return "نوار آبی"
+            Case StringId.DataBarLightBlue : Return " نوار آبی روشن"
+            Case StringId.DataBarGreen : Return "نوار سبز"
+            Case StringId.DataBarYellow : Return "نوار زرد"
+            Case StringId.DataBarOrange : Return "نوار نارنجی"
+            Case StringId.DataBarMint : Return "نوار نعنایی"
+            Case StringId.DataBarViolet : Return "نوار بنفش"
+            Case StringId.DataBarRaspberry : Return "نوار تمشکی"
+            Case StringId.DataBarCoral : Return "نوار مرجانی"
+            Case StringId.FormatRuleMenuItemColorScales : Return "مقیاس های رنگی"
+            Case StringId.ColorScaleBlueWhiteRed : Return "آبی - سفید - قرمز"
+            Case StringId.ColorScaleEmeraldAzureBlue : Return "لاجوردی - زمردی - آبی"
+            Case StringId.ColorScaleGreenWhiteRed : Return "سبز -سفید - قرمز"
+            Case StringId.ColorScaleGreenYellowRed : Return "سبز - زرد -قرمز"
+            Case StringId.ColorScalePurpleWhiteAzure : Return "بنفش - سفید - لاجوردی"
+            Case StringId.ColorScaleWhiteAzure : Return "سفید - لاجوردی"
+            Case StringId.ColorScaleWhiteGreen : Return "سفید - سبز"
+            Case StringId.ColorScaleWhiteRed : Return "سفید - قرمز"
+            Case StringId.ColorScaleYellowGreen : Return "زرد - سبز"
+            Case StringId.ColorScaleYellowOrangeCoral : Return "زرد - نارنجی - مرجانی"
+            Case StringId.FormatRuleMenuItemColorScaleDescription : Return "مقیاس های رنگی"
+            Case StringId.FormatRuleMenuItemIconSets : Return "مجموعه نمادها"
+            Case StringId.IconSetCategoryRatings : Return "---رتبه بندی---"
+            Case StringId.IconSetTitleStars3 : Return "3 ستاره"
+            Case StringId.IconSetTitleRatings4 : Return "رتبه بندی 4"
+            Case StringId.IconSetTitleRatings5 : Return "رتیه یندی 5"
+            Case StringId.IconSetTitleQuarters5 : Return "ربع نما 5"
+            Case StringId.IconSetTitleBoxes5 : Return "جعبه ای 5"
+            Case StringId.IconSetCategoryDirectional : Return "---جهت نما---"
+            Case StringId.IconSetTitleArrows3Colored : Return "پیکان رنگی 3"
+            Case StringId.IconSetTitleArrows4Colored : Return "پیکان رنگی 4"
+            Case StringId.IconSetTitleArrows5Colored : Return "پیکان رنگی 5"
+            Case StringId.IconSetTitleArrows3Gray : Return "پیکان خاکستری 3"
+            Case StringId.IconSetTitleArrows4Gray : Return "پیکان خاکستری 4"
+            Case StringId.IconSetTitleArrows5Gray : Return "پیکان خاکستری 5"
+            Case StringId.IconSetTitleTriangles3 : Return "مثلث رنگی 3"
+            Case StringId.IconSetCategoryShapes : Return "---اشکال---"
+            Case StringId.IconSetTitleTrafficLights3Unrimmed : Return " چراغ راهنما مربعی"
+            Case StringId.IconSetTitleTrafficLights3Rimmed : Return "چراغ راهنما دایره ای"
+            Case StringId.IconSetTitleSigns3 : Return "علامتها3"
+            Case StringId.IconSetTitleTrafficLights4 : Return "چراغ راهنما 4"
+            Case StringId.IconSetTitleRedToBlack : Return "قرمز به مشکی"
+            Case StringId.IconSetCategorySymbols : Return "---علامتها---"
+            Case StringId.IconSetTitleSymbols3Circled : Return "علامت غیر دابره ای"
+            Case StringId.IconSetTitleSymbols3Uncircled : Return "علامت دایره ای"
+            Case StringId.IconSetTitleFlags3 : Return "پرچم 3"
+            Case StringId.IconSetCategoryPositiveNegative : Return "---مثبت / منفی---"
+            Case StringId.IconSetTitlePositiveNegativeArrowsGray : Return "پیکان مثبت و منفی خاکستری"
+            Case StringId.IconSetTitlePositiveNegativeArrows : Return "پیکان مثبت و منفی"
+            Case StringId.IconSetTitlePositiveNegativeTriangles : Return "مثلث مثبت و منفی"
+            Case StringId.FormatRuleCustomConditionText : Return "تحلیل شرطی"
+            Case StringId.FormatRuleMenuItemClearRules : Return "حذف قوانین"
+            Case StringId.FormatRuleMenuItemClearAllRules : Return "حذف همه قوانین"
+            Case StringId.FormatRuleMenuItemClearColumnRules : Return "حذف قوانین این ستون"
+            Case StringId.FormatRuleWith : Return "اعمال کن"
+            Case StringId.OK : Return "تایید"
+            Case StringId.Cancel : Return "انصراف"
+            Case StringId.FormatRuleApplyFormatProperty : Return "اعمال قالب بر کل ردیف"
+            Case StringId.FormatRuleEqualToText : Return "ردیفهایی که مقدارشان مساوی است با "
+            Case StringId.FormatRuleGreaterThanText : Return "ردیفهایی که مقدارشان بزرگتر است از"
+            Case StringId.FormatRuleLessThanText : Return "ردیفهایی که مقدارشان کوچکتراست از"
+            Case StringId.FormatRuleBetweenText : Return "ردیفهایی که مقدارشان بین"
+            Case StringId.FormatRuleTextThatContainsText : Return "ردیفهایی که متن شان شامل "
+            Case StringId.FormatRuleTopText : Return "برای تعداد ردیف های برتر"
+            Case StringId.FormatRuleBottomText : Return "برای تعداد ردیف های پایین"
+            Case StringId.FormatRuleAboveAverageText : Return "برای ردیف هایی که بیش از میانگین هستند"
+            Case StringId.FormatRuleForThisColumnWith : Return "اعمال کن"
+            Case StringId.FormatRuleMenuItemBelowAverage : Return "برای ردیف هایی که کمتر از میانگین هستند"
+            Case StringId.FormatRuleUniqueText : Return "برای ردیف هایی که منحضر به فرد هستند"
+            Case StringId.FormatRuleDuplicateText : Return "برای ردیف هایی که تکراری هستند"
+            Case Else : Return MyBase.GetLocalizedString(id)
+
+        End Select
+        Return ""
+    End Function
+End Class
+
+

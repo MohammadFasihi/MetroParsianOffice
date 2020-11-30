@@ -1,0 +1,14 @@
+﻿<Window x:Class="ParsianOffice.winDesignList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" ResizeMode="NoResize"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParsianOffice"
+        mc:Ignorable="d" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="Window_Closing"
+        Title="لیست طرح ها" Height="293.788" Width="217.455">
+    <Grid FlowDirection="RightToLeft">
+        <ListView Name="lst" FontFamily="B Yekan" MouseDoubleClick="lst_MouseDoubleClick">
+
+        </ListView>
+    </Grid>
+</Window>
